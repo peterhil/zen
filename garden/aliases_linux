@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+#
+# Linux aliases
+#
+
+# Apt
+alias apt-install='sudo apt-get install'
+alias apt-search='apt-cache search'
+
+# Wifi & networking
+alias wifiquality='iwconfig wlan0 | grep -i quality'
+alias wifisignal='iwconfig wlan0 | grep -i signal'
+alias wifiinfo='nmcli dev wifi'
+alias wifiwatch='watch -n 1 cat /proc/net/wireless'
+alias wifimonitor='wavemon'

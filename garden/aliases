@@ -156,12 +156,14 @@ alias pg="sudo -u postgres pg_ctl $1 -D $PGDATA -l $PGDATA/pgsql.log"
 # MySQL
 # alias mysqld_start='sudo mysqld_safe --defaults-file=/opt/local/etc/mysql55/my.cnf --socket=/opt/local/var/run/mysql55/mysqld.sock --user=_mysql &'
 
+#
+# System specific aliases
+#
 
-#
-# Mac OS X specific aliases
-#
 if os_type 'Darwin'; then
     require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_osx
+elif os_type 'Linux'; then
+    require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_linux
 fi
 
 #
