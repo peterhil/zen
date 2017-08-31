@@ -29,7 +29,7 @@ export TZ='Europe/Berlin'
 
 ## Path
 
-typeset -U path
+typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
     ${ZDOTDIR:-$HOME}/.rvm/bin
