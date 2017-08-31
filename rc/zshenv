@@ -1,24 +1,28 @@
 #!/bin/zsh
 
 #
+# Init zshenv
+#
+
 # Debugging - use like this:
 # ZSH_DEBUG=1 zsh
-#
 export ZSH_DEBUG=${ZSH_DEBUG:-0}
 
-#
 # Zsh tools
-#
 . ~/.zen/garden/tools
 
 quiet stopwatch
 debug "ZSHENV"
 
-
 #
 # Prezto zshenv
 #
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zshenv
+
+#
+# Environment
+#
+export RSYNC_RSH='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
 #
 # Local zshenv
