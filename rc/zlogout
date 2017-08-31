@@ -4,7 +4,9 @@ quiet stopwatch
 debug ZLOGOUT
 
 
-# Load Zprezto's zlogout
+#
+# Prezto zlogout
+#
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zlogout
 
 

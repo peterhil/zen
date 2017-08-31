@@ -3,13 +3,14 @@
 quiet stopwatch
 debug ZPROFILE
 
-
-## Prezto init
+#
+# Prezto zprofile
+#
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zprofile
 
-
-## Text editing - override these in ~/.zprofile.local if needed
-
+#
+# Text editing - override these in ~/.zprofile.local if needed
+#
 export LC_CTYPE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
@@ -19,16 +20,15 @@ export DISPLAY=':0.0'
 export EDITOR='emacs -nw'
 export VISUAL='emacs'
 export ALTERNATE_EDITOR='emacs'
-
 export PAGER='less'
 # export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"
 
 export NNTPSERVER='news.newshosting.com'
 export TZ='Europe/Berlin'
 
-
-## Path
-
+#
+# Paths
+#
 typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
@@ -39,7 +39,9 @@ path=(
 )
 export PATH
 
-## Local zprofile
+#
+# Local zprofile
+#
 require "${ZDOTDIR:-$HOME}"/.zprofile.local
 
 

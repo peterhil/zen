@@ -4,20 +4,34 @@ quiet stopwatch
 debug UTILS
 
 
-## Fink ##
-require /sw/bin/init.sh
+#
+# Zsh libraries
+#
 
-## Nix ##
-# require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
-
-## rupa/z
+# Z from rupa/z
 require "${ZDOTDIR:-$HOME}/.zen/lib/rupa/z/z.sh"
 
-## Oh my Zsh plugins
+# Pip
+require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
+
+# Oh my Zsh plugins
 require "${ZDOTDIR:-$HOME}/.oh-my-zsh/plugins/git/git.plugin.zsh"
 
-## Pip
-require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
+
+#
+# Package managers
+#
+
+# Fink
+require '/sw/bin/init.sh'
+
+# Nix
+# require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
+
+
+#
+# Shells
+#
 
 ## Xiki shell
 require "${ZDOTDIR:-$HOME}/.xsh"

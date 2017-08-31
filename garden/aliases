@@ -1,17 +1,17 @@
 #!/bin/zsh
 
-
-## Shell utils
+#
+# Shell utils
+#
 
 # Basic commands
-
 alias rm='nocorrect rm'
 alias ls='ls -Gh'
 alias l='ls -l'
 alias ll='ls -la'
 alias lsd='ls -ld'
 
-# Like ag/ack:
+# Search is like ag/ack:
 alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=vendor $1'
 
 # Find largest/smallest files in a directory
@@ -24,7 +24,6 @@ alias stdout='$1 2>&1'  # Combine stderr to stdout
 alias zargs='tr "\n" "\0" | xargs -0'
 
 # Processes
-
 alias agents='launchctl list | cut -f3 | grep -v Label | sort -u'
 alias cpu='ps -vxamrhw | more -EwSq~'
 alias mem='ps -xavh | more -EwSq~'
@@ -35,9 +34,11 @@ alias psr='ps -xvmr $* | less'
 alias pss='ps aux | tr "\n" "\0" | xargs -0 -n1 echo | grep -i $1'
 alias zombies='ps -Av | grep " Z " | grep -v grep'
 
+#
+# Text utils
+#
 
-
-# Tail recent log files that match an grep argument.
+# Logs: tail recent log files which names match a grep argument.
 # Example: logs -P '(apa|error|sys)' | prism -m
 logs() {
     find {/usr/local,/sw,}/var/log{/apache2,} -atime -3 -type file -and -name '*[._]log' -print0 2>/dev/null | \
@@ -46,9 +47,6 @@ logs() {
         xargs -0 tail -f
 }
 
-
-## Text utils
-
 replace () {
     perl -pe "s/$(echo $1)/$(echo $2)/g"
 }
@@ -56,14 +54,14 @@ alias tabify="replace ' +' '\t'"
 alias untabify="replace '\t' '    '"
 alias quotelines="replace '^(.*)\n' '\"\1\"\n'"
 
-
-## Programming
+#
+# Programming
+#
 
 alias todo='search -E "((//|#|--)\s+(TODO|REMOVEME|FIXME))"'
 alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
 
 # Git
-
 function git-base-diff () {
     git merge-base "$1" `git rev-parse --abbrev-ref HEAD 2>/dev/null`
 }
@@ -75,17 +73,13 @@ alias git-assumed="git ls-files -v | grep ^h | cut -c 3-"
 alias gbm='git diff `git-base-diff test-coverage`'
 alias git-open-new="gss | grep -E '^??' | tabify | cut -f2 | xargs open"
 
-
 # Emacsclient
-
 alias emx-start="emacsclient -e '(server-start)'"
 alias emx-kill="emacsclient -e '(server-shutdown)'"
 alias em="emacsclient -t"
 alias emx="emacsclient -c -n -a emacs"  # Open an Emacs editor with GUI
 
-
 # Readline rlwrap
-
 # alias node="env NODE_NO_READLINE=1 rlwrap node"
 alias sbcl="rlwrap sbcl"
 alias ccl="rlwrap ccl"
@@ -117,7 +111,7 @@ grep_sections() {
 }
 
 
-## Python
+# Python
 
 if alias ipython; then
     unalias ipython
@@ -126,7 +120,7 @@ fi
 alias ipython="python `whence ipython` --pprint"
 
 
-## Haskell
+# Haskell
 
 alias cabal-install-qt="cabal install $1 --ghc-options='-framework-path=$QT_DIR/lib'"
 alias cabal-installed-pkgs="ghc-pkg --simple-output list | ruby -pe 'gsub(/ /, \"\n\")' | ruby -pe 'gsub(/-[\d\.]+$/, \"\")' | sort -u"
@@ -134,7 +128,7 @@ alias cabal-license="grep -E '(^\* |License:)' | ruby -pe 'gsub(/\s+\([^)]+\)\s+
 alias cabal-all-licenses="cabal-installed-pkgs | xargs cabal info | cabal-license"
 
 
-## Ruby
+# Ruby
 
 alias rb='rbenv'
 alias be='bundle exec'
@@ -146,7 +140,10 @@ gi() {
     rehash
 }
 
-## Databases
+
+#
+# Databases
+#
 
 # Rexster
 alias rex="rexster.sh"
@@ -160,10 +157,14 @@ alias pg="sudo -u postgres pg_ctl $1 -D $PGDATA -l $PGDATA/pgsql.log"
 # alias mysqld_start='sudo mysqld_safe --defaults-file=/opt/local/etc/mysql55/my.cnf --socket=/opt/local/var/run/mysql55/mysqld.sock --user=_mysql &'
 
 
-## Mac OS X specific
+#
+# Mac OS X specific aliases
+#
 if os_type 'Darwin'; then
     require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_osx
 fi
 
-
+#
+# Local aliases
+#
 require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases.local

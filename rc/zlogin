@@ -4,7 +4,9 @@ quiet stopwatch
 debug ZLOGIN
 
 
-# Prezto init
+#
+# Prezto zlogin
+#
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zlogin
 
 

@@ -4,7 +4,9 @@ quiet stopwatch
 debug ZPREZTORC
 
 
-# Prezto init
+#
+# Prezto rc
+#
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zpreztorc
 
 # Set the Prezto modules to load (browse modules).

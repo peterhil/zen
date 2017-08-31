@@ -4,11 +4,14 @@ quiet stopwatch
 debug ZSHRC
 
 
-## Prezto init
+#
+# Prezto zshrc
+#
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/init.zsh
 
-
-## Command history
+#
+# Command history
+#
 export HISTFILE=~/.zsh_history
 export HISTSIZE=${HISTSIZE:-100000}
 export SAVEHIST=50000
@@ -27,38 +30,40 @@ export HISTIGNORE=${HISTIGNORE:-"shutdown*:halt*:poweroff*:rm -rf*"}
 # Add the date to the historylog
 export HISTTIMEFORMAT=${HISTTIMEFORMAT:-"%Y-%m-%d %H:%M:%S"}
 
-
-## Options
+#
+# Options
+#
 bindkey -e
 setopt appendhistory autocd notify
 unsetopt beep
 unsetopt correct_all
 #[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
 
-
-## Completion
+# Completion
 autoload -Uz compinit
 compinit -i
 
-## Initialize colors.
+# Shell colors
 autoload -U colors
 colors
 
-## Prompt
+# Prompt
 autoload -U promptinit
 promptinit
 prompt cloud '✯'
 
-## Zsh builtin modules
+# Zsh builtin modules
 autoload -U zmv
 
-## Set aliases
+# Aliases
 require ~/.zen/garden/aliases
 
-## Utils
+# Zen utils
 require ~/.zen/garden/utils
 
-## Local zshrc
+#
+# Local zshrc
+#
 require "${ZDOTDIR:-$HOME}"/.zshrc.local
 
 

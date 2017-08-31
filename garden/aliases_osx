@@ -1,7 +1,8 @@
 #!/bin/zsh
 
-
-## Applications
+#
+# Applications
+#
 
 alias app='open -a'
 alias aq="emacsclient -c -a aquamacs"
@@ -38,7 +39,9 @@ brew-installed() {
 }
 
 
-## Property list files
+#
+# Property list files
+#
 
 alias plist-xml='plutil -convert xml1 -o - $1'
 alias plist='zargs -n1 -I{} plutil -convert xml1 -o - "{}"'

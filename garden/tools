@@ -27,11 +27,15 @@ stopwatch () {
     PREV=$NOW
 }
 
+# Format floats with some precision, example:
+# % float_print(0.187 2)
+# 0,19
 float_print () {
     local PRECISION="${2:-3}"
     printf "%.$(echo $PRECISION)f" "$1"
 }
 
+# Execute a command and output the time it took as debug output
 timeit () {
     local START=$SECONDS
     $*
@@ -64,10 +68,15 @@ _require () {
     done
 }
 
+# Source a file. Does NOT throw error if file can not be sourced!
 require () {
     timeit _require $*
 }
 
+# Test operating system type.
+#
+# Can be used in if statements like this:
+# if os_type 'Darwin'; then echo 'Apple is also thinking differently about Unix philosophy...'; fi
 os_type() {
     test "$1" = `uname -s`
 }

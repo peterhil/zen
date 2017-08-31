@@ -1,20 +1,28 @@
 #!/bin/zsh
 
-# Use debugging like this:
+#
+# Debugging - use like this:
 # ZSH_DEBUG=1 zsh
+#
 export ZSH_DEBUG=${ZSH_DEBUG:-0}
 
-## Zsh init tools
+#
+# Zsh tools
+#
 . ~/.zen/garden/tools
 
 quiet stopwatch
 debug "ZSHENV"
 
 
-## Prezto init
+#
+# Prezto zshenv
+#
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zshenv
 
-## Local zshenv
+#
+# Local zshenv
+#
 require "${ZDOTDIR:-$HOME}"/.zshenv.local
 
 
