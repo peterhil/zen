@@ -7,5 +7,29 @@ debug ZPREZTORC
 # Prezto init
 require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zpreztorc
 
+# Set the Prezto modules to load (browse modules).
+# The order matters.
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'history-substring-search' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'homebrew' \
+  'osx' \
+  'ruby' \
+  'rails' \
+  'git' \
+  'node' \
+  'python' \
+  'haskell' \
+  'syntax-highlighting' \
+  'tmux' \
+  'prompt'
+
 
 debug_loadtime ZPREZTORC
