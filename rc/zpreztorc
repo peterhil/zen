@@ -25,6 +25,7 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'ruby' \
   'rails' \
+  'rsync' \
   'git' \
   'node' \
   'python' \
