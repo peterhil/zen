@@ -32,7 +32,6 @@ export TZ='Europe/Berlin'
 typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
-    ${ZDOTDIR:-$HOME}/.rvm/bin
     /usr/local/bin
     /usr/local/sbin
     /opt/local/bin

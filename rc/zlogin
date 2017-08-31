@@ -7,9 +7,6 @@ debug ZLOGIN
 # Prezto init
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zlogin
 
-# Ruby version manager
-[[ -s "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm" ]] && source "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 
 debug_loadtime ZLOGIN
 debug "ZSH startup: $(float_print $SECONDS) seconds\n"

@@ -19,10 +19,6 @@ require "${ZDOTDIR:-$HOME}/.oh-my-zsh/plugins/git/git.plugin.zsh"
 ## Pip
 require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
 
-## Ruby version manager
-require "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm"
-rvm_silence_path_mismatch_check_flag=1
-
 ## Xiki shell
 require "${ZDOTDIR:-$HOME}/.xsh"
 
