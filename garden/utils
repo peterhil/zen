@@ -15,7 +15,7 @@ require "${ZDOTDIR:-$HOME}/.zen/lib/rupa/z/z.sh"
 require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
 
 # Oh my Zsh plugins
-require "${ZDOTDIR:-$HOME}/.oh-my-zsh/plugins/git/git.plugin.zsh"
+require "${ZDOTDIR:-$HOME}/.zen/lib/tevren/git-zsh-plugin/git.plugin.zsh"
 
 
 #
