@@ -8,7 +8,7 @@ debug UTILS
 require /sw/bin/init.sh
 
 ## Nix ##
-require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
+# require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
 
 ## rupa/z
 require "${ZDOTDIR:-$HOME}/.zen/lib/rupa/z/z.sh"
