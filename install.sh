@@ -2,7 +2,7 @@
 
 setopt EXTENDED_GLOB
 
-for rcfile in "${ZDOTDIR:-$HOME}"/.zen/rc/^README.md; do
+for rcfile in "${ZDOTDIR:-$HOME}"/.zen/{rc/^README.md,lib/zprezto}; do
     # echo "ln -s" "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done

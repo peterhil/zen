@@ -5,7 +5,7 @@ debug ZLOGOUT
 
 
 # Load Zprezto's zlogout
-require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zlogout
+require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zlogout
 
 
 debug_loadtime ZLOGOUT

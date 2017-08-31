@@ -5,7 +5,7 @@ debug ZLOGIN
 
 
 # Prezto init
-require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zlogin
+require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zlogin
 
 # Ruby version manager
 [[ -s "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm" ]] && source "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

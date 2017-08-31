@@ -12,7 +12,7 @@ debug "ZSHENV"
 
 
 ## Prezto init
-require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zshenv
+require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zshenv
 
 ## Local zshenv
 require "${ZDOTDIR:-$HOME}"/.zshenv.local

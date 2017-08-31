@@ -5,7 +5,7 @@ debug ZPROFILE
 
 
 ## Prezto init
-require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zprofile
+require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zprofile
 
 
 ## Text editing - override these in ~/.zprofile.local if needed

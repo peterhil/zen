@@ -5,7 +5,7 @@ debug ZPREZTORC
 
 
 # Prezto init
-require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zpreztorc
+require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zpreztorc
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
