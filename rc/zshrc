@@ -5,7 +5,7 @@ debug ZSHRC
 
 
 ## Prezto init
-require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zshrc
+require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/init.zsh
 
 
 ## Command history
