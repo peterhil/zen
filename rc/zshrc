@@ -1,0 +1,48 @@
+#!/bin/zsh
+
+quiet stopwatch
+debug ZSHRC
+
+
+# Prezto init
+require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zshrc
+
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=20000
+
+bindkey -e
+
+setopt appendhistory autocd notify
+unsetopt beep
+unsetopt correct_all
+
+#[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
+
+## Completion
+autoload -Uz compinit
+compinit -i
+
+## Initialize colors.
+autoload -U colors
+colors
+
+## Prompt
+autoload -U promptinit
+promptinit
+prompt cloud '✯'
+
+## Zsh builtin modules
+autoload -U zmv
+
+## Set aliases
+require ~/.zen/garden/aliases
+
+## Utils
+require ~/.zen/garden/utils
+
+## Local zshrc
+require "${ZDOTDIR:-$HOME}"/.zshrc.local
+
+
+debug_loadtime ZSHRC

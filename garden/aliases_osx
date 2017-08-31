@@ -1,0 +1,47 @@
+#!/bin/zsh
+
+
+## Applications
+
+alias app='open -a'
+alias aq="emacsclient -c -a aquamacs"
+
+# Replacement for Aquamacs' stupid Perl script
+aquamacs () {
+    for file in $*; do
+	    local dir=`dirname "$file"`
+	    if [[ ! -d $dir ]]; then
+	        debug "$0: Creating directory '$dir'."
+	        mkdir -p "$dir"
+	    fi
+	    if [[ ! -w $file ]]; then
+	        debug "$0: Creating file '$file'."
+	        touch "$file"
+	    fi
+    done
+    open -a Aquamacs $*
+}
+
+# Edit Markdown files with an editor
+md() {
+    open -a MacDown $*
+}
+
+# Search in dash
+dash() {
+    open dash://$1
+}
+
+# List brew installed packages
+brew-installed() {
+    ls -1 /usr/local/Cellar/
+}
+
+
+## Property list files
+
+alias plist-xml='plutil -convert xml1 -o - $1'
+alias plist='zargs -n1 -I{} plutil -convert xml1 -o - "{}"'
+alias plist-files="gfind . -name '*.plist' -printf '\n=== :: %p :: ===\n' -execdir plutil -convert xml1 -o - {} \;"
+# alias plist-filter-binary="file '$@' | grep 'binary property list' | cut -d':' -f1"
+# alias plist-each='for FILE in `file * | grep "binary property list" | cut -d":" -f1`; do echo "\n=== :: "$FILE" :: ===\n"; plist-xml "`quotelines $FILE`"; done'

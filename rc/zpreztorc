@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+quiet stopwatch
+debug ZPREZTORC
+
+
+# Prezto init
+require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zpreztorc
+
+
+debug_loadtime ZPREZTORC

@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+quiet stopwatch
+debug ZLOGOUT
+
+
+# Load Zprezto's zlogout
+require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zlogout
+
+
+debug_loadtime ZLOGOUT

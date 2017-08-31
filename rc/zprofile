@@ -1,0 +1,48 @@
+#!/bin/zsh
+
+quiet stopwatch
+debug ZPROFILE
+
+
+## Prezto init
+require "${ZDOTDIR:-$HOME}"/.zen/lib/prezto/runcoms/zprofile
+
+
+## Text editing - override these in ~/.zprofile.local if needed
+
+export LC_CTYPE='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
+
+export CHARSET='UTF-8'
+export DISPLAY=':0.0'
+
+export EDITOR='emacs -nw'
+export VISUAL='emacs'
+export ALTERNATE_EDITOR='emacs'
+
+export PAGER='less'
+# export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"
+
+export NNTPSERVER='news.newshosting.com'
+export TZ='Europe/Berlin'
+
+
+## Path
+
+typeset -U path
+path=(
+    ${ZDOTDIR:-$HOME}/bin
+    ${ZDOTDIR:-$HOME}/.rvm/bin
+    /usr/local/bin
+    /usr/local/sbin
+    /opt/local/bin
+    /opt/local/sbin
+    $path
+    ./node_modules/.bin
+)
+
+## Local zprofile
+require "${ZDOTDIR:-$HOME}"/.zprofile.local
+
+
+debug_loadtime ZPROFILE

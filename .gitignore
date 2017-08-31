@@ -1,0 +1,8 @@
+# Ignore local configuration -- use these to store machine specific settings
+# and possibly sensitive information like API keys
+*.local
+
+# Temporary files etc.
+*~
+.DS_Store
+.\#*

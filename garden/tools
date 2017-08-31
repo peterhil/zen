@@ -1,0 +1,76 @@
+#!/bin/zsh
+
+typeset -F SECONDS
+typeset -F PREV
+typeset -F NOW
+typeset -F START
+typeset -F DURA
+
+debug () {
+    [[ $ZSH_DEBUG = 1 ]] && echo "DEBUG: $*"
+}
+
+debug TOOLS
+
+
+debug_loadtime () {
+    debug "$1 loaded in $(float_print $(stopwatch)) seconds\n"
+}
+
+quiet () {
+    $* >/dev/null
+}
+
+stopwatch () {
+    NOW=$SECONDS
+    echo $(( $NOW - ${PREV:-$NOW} ))
+    PREV=$NOW
+}
+
+float_print () {
+    local PRECISION="${2:-3}"
+    printf "%.$(echo $PRECISION)f" "$1"
+}
+
+timeit () {
+    local START=$SECONDS
+    $*
+    debug "$*  # time: $(float_print $(($SECONDS - $START)) 4)"
+}
+
+timestamp () {
+    date "+%Y%m%d%H%M%S"
+}
+
+nonempty () {
+    [[ -s "$1" ]] && echo "$1"
+}
+
+readable () {
+    [[ -r "$1" ]] && echo "$1"
+}
+
+sourceable () {
+    if test $(nonempty "$1") && test $(readable "$1"); then
+        echo "$1"
+    fi
+}
+
+_require () {
+    for file in $*; do
+        if test $(sourceable "$file"); then
+           source $file
+        fi
+    done
+}
+
+require () {
+    timeit _require $*
+}
+
+os_type() {
+    test "$1" = `uname -s`
+}
+
+
+debug_loadtime TOOLS

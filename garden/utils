@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+quiet stopwatch
+debug UTILS
+
+
+## Fink ##
+require /sw/bin/init.sh
+
+## Nix ##
+require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
+
+## rupa/z
+require "${ZDOTDIR:-$HOME}/.zen/garden/z.sh"
+
+## Oh my Zsh plugins
+require "${ZDOTDIR:-$HOME}/.oh-my-zsh/plugins/git/git.plugin.zsh"
+
+## Pip
+require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
+
+## Ruby version manager
+require "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm"
+
+## Xiki shell
+#require "${ZDOTDIR:-$HOME}/.xsh"
+
+
+debug_loadtime UTILS
