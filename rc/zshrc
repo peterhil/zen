@@ -4,20 +4,37 @@ quiet stopwatch
 debug ZSHRC
 
 
-# Prezto init
+## Prezto init
 require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zshrc
 
-HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=20000
 
+## Command history
+export HISTFILE=~/.zsh_history
+export HISTSIZE=${HISTSIZE:-100000}
+export SAVEHIST=50000
+
+# Ignore duplicates commands in the historylog
+#
+# ignorespace	| don't save lines which begin with a <space> character
+# ignoredups	| don't save lines matching the previous history entry
+# ignoreboth	| use both 'ignorespace' and 'ignoredups'
+# erasedups	  | eliminate duplicates across the whole history
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}erasedups
+
+# Make some commands not show up in history
+export HISTIGNORE=${HISTIGNORE:-"shutdown*:halt*:poweroff*:rm -rf*"}
+
+# Add the date to the historylog
+export HISTTIMEFORMAT=${HISTTIMEFORMAT:-"%Y-%m-%d %H:%M:%S"}
+
+
+## Options
 bindkey -e
-
 setopt appendhistory autocd notify
 unsetopt beep
 unsetopt correct_all
-
 #[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
+
 
 ## Completion
 autoload -Uz compinit
