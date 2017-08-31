@@ -23,7 +23,7 @@ require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
 require "${ZDOTDIR:-$HOME}/.rvm/scripts/rvm"
 
 ## Xiki shell
-#require "${ZDOTDIR:-$HOME}/.xsh"
+require "${ZDOTDIR:-$HOME}/.xsh"
 
 
 debug_loadtime UTILS
