@@ -10,7 +10,7 @@ First, clone the repository:
 
 Symlink the files to your user home directory (or `$ZDOTDIR`). This can be easily done by running:
 
-`$HOME/.zen/install.sh`
+`$HOME/.zen/install.zsh`
 
 
 ## License
