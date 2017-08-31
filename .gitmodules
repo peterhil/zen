@@ -1,3 +1,6 @@
 [submodule "lib/prezto"]
 	path = lib/prezto
 	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "lib/rupa/z"]
+	path = lib/rupa/z
+	url = https://github.com/rupa/z.git

@@ -11,7 +11,7 @@ require /sw/bin/init.sh
 require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
 
 ## rupa/z
-require "${ZDOTDIR:-$HOME}/.zen/lib/z.sh"
+require "${ZDOTDIR:-$HOME}/.zen/lib/rupa/z/z.sh"
 
 ## Oh my Zsh plugins
 require "${ZDOTDIR:-$HOME}/.oh-my-zsh/plugins/git/git.plugin.zsh"
