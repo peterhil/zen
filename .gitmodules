@@ -4,3 +4,6 @@
 [submodule "lib/rupa/z"]
 	path = lib/rupa/z
 	url = https://github.com/rupa/z.git
+[submodule "lib/tevren/git-zsh-plugin"]
+	path = lib/tevren/git-zsh-plugin
+	url = https://github.com/tevren/git-zsh-plugin.git
