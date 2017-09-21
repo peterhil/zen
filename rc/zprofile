@@ -33,7 +33,6 @@ typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
     /usr/local/{bin,sbin}
-    /opt/local/{bin,sbin}
     $path
     ./node_modules/.bin
 )
