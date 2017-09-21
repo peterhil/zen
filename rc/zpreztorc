@@ -26,13 +26,13 @@ zstyle ':prezto:load' pmodule \
   'ruby' \
   'rails' \
   'rsync' \
+  'prompt' \
   'git' \
   'node' \
   'python' \
   'haskell' \
   'syntax-highlighting' \
-  'tmux' \
-  'prompt'
+  'tmux'
 
 
 debug_loadtime ZPREZTORC
