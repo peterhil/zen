@@ -111,15 +111,6 @@ grep_sections() {
 }
 
 
-# Python
-
-if alias ipython; then
-    unalias ipython
-fi
-# Make IPython use virtualenv Python instead of the system Python
-alias ipython="python `whence ipython` --pprint"
-
-
 # Haskell
 
 alias cabal-install-qt="cabal install $1 --ghc-options='-framework-path=$QT_DIR/lib'"
