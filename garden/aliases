@@ -62,8 +62,33 @@ alias todo='search -E "((//|#|--)\s+(TODO|REMOVEME|FIXME))"'
 alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
 
 # Git
-function git-base-diff () {
-    git merge-base "$1" `git rev-parse --abbrev-ref HEAD 2>/dev/null`
+
+alias git-current-branch="git rev-parse --abbrev-ref HEAD 2>/dev/null"
+
+function git-branch-diff () {
+	# Return difference of two git branches from a common merge commit
+    local current=$(git-current-branch)
+    if [[ ! -n $current ]]; then
+        echo "Error: Not a git repository." 1>&2
+        return 1
+    fi
+    local to_branch=$1
+    local from_branch=${2:-$current}
+
+    git diff $(git merge-base "$from_branch" "$to_branch")..$to_branch
+}
+
+function git-log-diff () {
+	# Return difference of one line log messages of two git branches
+    local current=$(git-current-branch)
+	if [[ ! -n $current ]]; then
+		echo "Error: Not a git repository." >&2
+		return 1
+	fi
+    local from_branch=$1
+    local to_branch=${2:-$current}
+
+	diff -u <(git log --oneline $from_branch) <(git log --oneline $to_branch)
 }
 
 alias gam="gss | grep '^.M' | cut -c4- | cut -d' ' -f3 | xargs git add"
