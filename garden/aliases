@@ -72,8 +72,8 @@ function git-branch-diff () {
         echo "Error: Not a git repository." 1>&2
         return 1
     fi
-    local to_branch=$1
-    local from_branch=${2:-$current}
+    local from_branch=$1
+    local to_branch=${2:-$current}
 
     git diff $(git merge-base "$from_branch" "$to_branch")..$to_branch
 }
