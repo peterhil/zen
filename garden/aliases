@@ -6,7 +6,7 @@
 
 # Basic commands
 alias rm='nocorrect rm'
-alias ls='ls -Gh'
+alias ls='ls -G'
 alias l='ls -l'
 alias ll='ls -la'
 alias lsd='ls -ld'
@@ -101,8 +101,8 @@ alias git-open-new="gss | grep -E '^??' | tabify | cut -f2 | xargs open"
 # Emacsclient
 alias emx-start="emacsclient -e '(server-start)'"
 alias emx-kill="emacsclient -e '(server-shutdown)'"
-alias em="emacsclient -t"
-alias emx="emacsclient -c -n -a emacs"  # Open an Emacs editor with GUI
+alias emc="emacsclient -t"  # CLI emacs
+alias emx="emacsclient -n"  # Open an Emacs editor with GUI
 
 # Readline rlwrap
 # alias node="env NODE_NO_READLINE=1 rlwrap node"

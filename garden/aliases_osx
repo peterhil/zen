@@ -5,7 +5,7 @@
 #
 
 alias app='open -a'
-alias aq="emacsclient -c -a aquamacs"
+# alias aq="emacsclient -c -a aquamacs"
 
 # Replacement for Aquamacs' stupid Perl script
 aquamacs () {

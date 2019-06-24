@@ -26,11 +26,7 @@ require "${ZDOTDIR:-$HOME}/.zen/lib/tevren/git-zsh-plugin/git.plugin.zsh"
 require '/sw/bin/init.sh'
 
 # Nix
-require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
-
-# Opam (OCaml packages)
-require "${ZDOTDIR:-$HOME}/.opam/opam-init/init.zsh"
-
+# require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
 
 #
 # Shells
