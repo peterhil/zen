@@ -33,6 +33,7 @@ typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
     /usr/local/{bin,sbin}
+    /opt/local/bin  # Manually installed software
     $path
 )
 export PATH
