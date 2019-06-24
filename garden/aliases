@@ -6,7 +6,7 @@
 
 # Basic commands
 alias rm='nocorrect rm'
-alias ls='ls -Gh'
+alias ls='ls -G'
 alias l='ls -l'
 alias ll='ls -la'
 alias lsd='ls -ld'
