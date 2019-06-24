@@ -6,10 +6,11 @@
 
 # Basic commands
 alias rm='nocorrect rm'
-alias ls='ls -G'
-alias l='ls -l'
-alias ll='ls -la'
-alias lsd='ls -ld'
+alias l='ls -lG'
+alias ll='l -A'
+alias lll='l -a'
+alias lsd='l -d . ..'
+alias lss='l -sS'
 
 # Search is like ag/ack:
 alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=vendor $1'
