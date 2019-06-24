@@ -34,7 +34,6 @@ path=(
     ${ZDOTDIR:-$HOME}/bin
     /usr/local/{bin,sbin}
     $path
-    ./node_modules/.bin
 )
 export PATH
 
