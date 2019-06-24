@@ -28,10 +28,6 @@ require '/sw/bin/init.sh'
 # Nix
 # require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
 
-# Opam (OCaml packages)
-require "${ZDOTDIR:-$HOME}/.opam/opam-init/init.zsh"
-
-
 #
 # Shells
 #
