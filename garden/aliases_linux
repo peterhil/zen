@@ -6,7 +6,24 @@
 
 # Apt
 alias apt-install='sudo apt-get install'
-alias apt-search='apt-cache search'
+alias apt-search='apt search'
+
+apt-apropos() {
+    apt search $* 2>/dev/null | grep -E '($*|)' | grep -E '^[[:alnum:]_-]+/' | cut -d'/' -f1
+}
+
+apt-query() {
+    dpkg-query -W $* | cut -f1
+}
+
+apt-size() {
+    apt show $* 2>/dev/null | \grep -E --color=never '(Package:|Size:|^$)'
+}
+
+autoload -U zargs
+apt-apropos-sizes() {
+    zargs -r -- $(apt-apropos $*) -- apt-size
+}
 
 # Wifi & networking
 alias wifiquality='iwconfig wlan0 | grep -i quality'
