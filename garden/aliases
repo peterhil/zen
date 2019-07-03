@@ -65,6 +65,10 @@ alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+
 
 alias git-current-branch="git rev-parse --abbrev-ref HEAD 2>/dev/null"
 
+function git-log-renames () {
+    git log --name-only --format=format: --follow --find-copies-harder -- $1 | grep -v '^$' | sort -u
+}
+
 function git-branch-diff () {
 	# Return difference of two git branches from a common merge commit
     local current=$(git-current-branch)
