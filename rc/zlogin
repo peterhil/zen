@@ -4,11 +4,6 @@ quiet stopwatch
 debug ZLOGIN
 
 
-#
-# Prezto zlogin
-#
-require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zlogin
-
 
 debug_loadtime ZLOGIN
 debug "ZSH startup: $(float_print $SECONDS) seconds\n"
