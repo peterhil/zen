@@ -4,6 +4,8 @@
 # Linux aliases
 #
 
+alias l='\ls -lGN --color=auto'
+
 # Apt
 alias apt-install='sudo apt-get install'
 alias apt-search='apt search'
