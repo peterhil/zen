@@ -23,7 +23,7 @@ require "${ZDOTDIR:-$HOME}/.zen/lib/tevren/git-zsh-plugin/git.plugin.zsh"
 #
 
 # Fink
-require '/sw/bin/init.sh'
+# require '/sw/bin/init.sh'
 
 # Nix
 # require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
@@ -33,7 +33,7 @@ require '/sw/bin/init.sh'
 #
 
 ## Xiki shell
-require "${ZDOTDIR:-$HOME}/.xsh"
+# require "${ZDOTDIR:-$HOME}/.xsh"
 
 
 debug_loadtime UTILS

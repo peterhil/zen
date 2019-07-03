@@ -57,10 +57,10 @@ prompt cloud '*'
 autoload -U zmv
 
 # Aliases
-require ~/.zen/garden/aliases
+require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases
 
 # Zen utils
-require ~/.zen/garden/utils
+require "${ZDOTDIR:-$HOME}"/.zen/garden/utils
 
 #
 # Local zshrc
