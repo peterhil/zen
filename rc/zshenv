@@ -4,8 +4,8 @@
 # Init zshenv
 #
 
-# Debugging - use like this:
-# ZSH_DEBUG=1 zsh
+# ZSH startup debugging, uncomment next line to enable
+# ZSH_DEBUG=1
 export ZSH_DEBUG=${ZSH_DEBUG:-0}
 
 # Zsh tools

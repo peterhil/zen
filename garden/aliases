@@ -22,7 +22,7 @@ alias smallest_files='gfind -type f -printf "%s %p\n" | sort -n | head'
 alias ltail='less -Ri +F'
 alias paths="echo $PATH | perl -pe 's/:/\n/g'"
 alias stdout='$1 2>&1'  # Combine stderr to stdout
-alias zargs='tr "\n" "\0" | xargs -0'
+alias xargs0='tr "\n" "\0" | xargs -0'
 
 # Processes
 alias agents='launchctl list | cut -f3 | grep -v Label | sort -u'
