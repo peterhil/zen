@@ -33,7 +33,7 @@ require '/sw/bin/init.sh'
 #
 
 ## Xiki shell
-require "${ZDOTDIR:-$HOME}/.xsh"
+# require "${ZDOTDIR:-$HOME}/.xsh"
 
 
 debug_loadtime UTILS
