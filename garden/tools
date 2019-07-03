@@ -10,9 +10,6 @@ debug () {
     [[ $ZSH_DEBUG = 1 ]] && echo "DEBUG: $*"
 }
 
-debug TOOLS
-
-
 debug_loadtime () {
     debug "$1 loaded in $(float_print $(stopwatch)) seconds\n"
 }
@@ -27,6 +24,9 @@ stopwatch () {
     PREV=$NOW
 }
 
+quiet stopwatch
+debug TOOLS
+
 # Format floats with some precision, example:
 # % float_print(0.187 2)
 # 0,19
@@ -39,7 +39,7 @@ float_print () {
 timeit () {
     local START=$SECONDS
     $*
-    debug "$*  # time: $(float_print $(($SECONDS - $START)) 4)"
+    debug "    $(float_print $(($SECONDS - $START)) 4) > $*"
 }
 
 timestamp () {
