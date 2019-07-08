@@ -16,10 +16,12 @@ export EDITOR='emacs -nw'
 export VISUAL='emacs'
 export ALTERNATE_EDITOR='emacs'
 export PAGER='less'
-# export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"
 
-export NNTPSERVER='news.newshosting.com'
-export TZ='Europe/Berlin'
+export NNTPSERVER='news.inet.fi'
+export TZ='Europe/Helsinki'
+
+# export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"
+#[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
 
 #
 # Paths

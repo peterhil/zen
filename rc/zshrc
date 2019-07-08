@@ -36,11 +36,14 @@ export HISTTIMEFORMAT=${HISTTIMEFORMAT:-"%Y-%m-%d %H:%M:%S"}
 #
 # Options
 #
-bindkey -e
 setopt appendhistory autocd notify
 unsetopt beep
 unsetopt correct_all
-#[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
+
+#
+# Key bindings
+#
+bindkey -e
 
 # Completion
 autoload -Uz compinit
