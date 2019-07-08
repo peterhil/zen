@@ -32,7 +32,7 @@ alias mysqld_kill='ps aux | grep mysqld | grep -v grep | tabify | cut -f 2 | sud
 alias psc='ps -ar $*| less'
 alias psm='ps -xamv $* | less'
 alias psr='ps -xvmr $* | less'
-alias pss='ps aux | tr "\n" "\0" | xargs -0 -n1 echo | grep -i $1'
+alias pss='ps aux | grep -v grep | grep -i $@'
 alias zombies='ps -Av | grep " Z " | grep -v grep'
 
 #

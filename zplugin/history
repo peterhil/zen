@@ -14,8 +14,3 @@ zplugin load zsh-users/zsh-history-substring-search
 # search through long list of commands with Ctrl+R
 zplugin ice from"gh" wait"1" silent pick"history-search-multi-word.plugin.zsh" lucid
 zplugin light zdharma/history-search-multi-word
-
- # substring search keys
- bindkey '^[[A' history-substring-search-up
- bindkey '^[[B' history-substring-search-down
- 
