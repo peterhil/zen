@@ -15,11 +15,6 @@ quiet stopwatch
 debug "ZSHENV"
 
 #
-# Prezto zshenv
-#
-require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zshenv
-
-#
 # Environment
 #
 export RSYNC_RSH='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
