@@ -16,8 +16,8 @@ alias lss='l -sS'
 alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=vendor $1'
 
 # Find largest/smallest files in a directory
-alias biggest_files='gfind -type f -printf "%s %p\n" | sort -nr | head'
-alias smallest_files='gfind -type f -printf "%s %p\n" | sort -n | head'
+alias biggest_files='find -type f -printf "%s %p\n" | sort -nr | head'
+alias smallest_files='find -type f -printf "%s %p\n" | sort -n | head'
 
 alias ltail='less -Ri +F'
 alias paths="echo $PATH | perl -pe 's/:/\n/g'"
