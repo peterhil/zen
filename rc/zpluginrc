@@ -3,53 +3,17 @@
 quiet stopwatch
 debug ZPLUGINRC
 
-
 #
 # Zplugin configuration
 #
 
-# ==============================================================================
-# Use Oh-My-Zsh (OMZ) Themes
-# ------------------------------------------------------------------------------
-# https://github.com/zdharma/zplugin#using-oh-my-zsh-themes
-
-# Load OMZ Git library
-zplugin snippet OMZ::lib/git.zsh
-
-# Load Git plugin from OMZ
-#
-# Some themes require not only Oh-My-Zsh's Git library, but also Git plugin
-# (error about current_branch function can be appearing). Load this Git-plugin
-# as single-file snippet directly from OMZ:
-zplugin snippet OMZ::plugins/git/git.plugin.zsh
+source $HOME/.zen/zplugin/git
 
 zplugin cdclear -q # <- forget completions provided up to this moment
 
-setopt promptsubst
+source $HOME/.zen/zplugin/prompt
+source $HOME/.zen/zplugin/history
+source $HOME/.zen/zplugin/plugins
 
-
-# ==============================================================================
-# Plugins
-# ------------------------------------------------------------------------------
-
-zplugin load zdharma/fast-syntax-highlighting
-# zplugin light zsh-users/zsh-autosuggestions
-# zplugin light zdharma/history-search-multi-word
-
-
-# ==============================================================================
-# Prompt
-# ------------------------------------------------------------------------------
-
-# Load theme from OMZ
-# zplugin snippet OMZ::themes/cloud.zsh-theme
-
-# Load normal Github plugin with theme depending on OMZ Git library
-# zplugin light NicoSantangelo/Alpharized
-
-# Minimal ZSH plugin with async git prompt
-zplugin load agkozak/agkozak-zsh-prompt
-
-# ------------------------------------------------------------------------------
 
 debug_loadtime ZPLUGINRC
