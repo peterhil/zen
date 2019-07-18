@@ -4,7 +4,14 @@ Zsh environment and utilies by Peter Hillerström
 
 ## Installation
 
-First, clone the repository:
+Install [Zplugin](https://github.com/zdharma/zplugin/wiki/INSTALLATION#manual-installation) manually:
+
+```
+mkdir ~/.zplugin
+git clone https://github.com/zdharma/zplugin.git ~/.zplugin/bin
+```
+
+Then clone this repository:
 
 `git clone --recursive https://github.com/peterhil/zen.git "${ZDOTDIR:-$HOME}/.zen"`
 
