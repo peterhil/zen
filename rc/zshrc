@@ -50,8 +50,7 @@ colors
 # Prompt
 autoload -U promptinit
 promptinit
-# prompt cloud '✯'
-prompt cloud '*'
+prompt fade black black grey
 
 # Zsh builtin modules
 autoload -U zmv
