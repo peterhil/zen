@@ -13,7 +13,7 @@ require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/init.zsh
 # Command history
 #
 export HISTFILE=~/.zsh_history
-export HISTSIZE=${HISTSIZE:-100000}
+export HISTSIZE=10000
 export SAVEHIST=50000
 
 # Ignore duplicates commands in the historylog
