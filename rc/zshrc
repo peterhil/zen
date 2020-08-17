@@ -50,7 +50,11 @@ colors
 # Prompt
 autoload -U promptinit
 promptinit
-prompt fade black black grey
+if test 'root' = $(whoami); then
+    prompt fade red
+else
+    prompt fade black black grey
+fi
 
 # Zsh builtin modules
 autoload -U zmv
