@@ -24,7 +24,7 @@ export PAGER='less'
 # export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"
 
 export NNTPSERVER='news.newshosting.com'
-export TZ='Europe/Berlin'
+export TZ='Europe/Helsinki'
 
 #
 # Paths
