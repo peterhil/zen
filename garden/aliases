@@ -16,8 +16,8 @@ alias lss='l -sS'
 alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=vendor $1'
 
 # Find largest/smallest files in a directory
-alias biggest_files='gfind -type f -printf "%s %p\n" | sort -nr | head'
-alias smallest_files='gfind -type f -printf "%s %p\n" | sort -n | head'
+alias biggest_files='find . -type f -ls | awk '{print $7 " " $11}' | sort -nr | head'
+alias smallest_files='find . -type f -ls | awk '{print $7 " " $11}' | sort -n | head'
 
 alias ltail='less -Ri +F'
 alias paths="echo $PATH | perl -pe 's/:/\n/g'"
@@ -25,15 +25,7 @@ alias stdout='$1 2>&1'  # Combine stderr to stdout
 alias xargs0='tr "\n" "\0" | xargs -0'
 
 # Processes
-alias agents='launchctl list | cut -f3 | grep -v Label | sort -u'
-alias cpu='ps -vxamrhw | more -EwSq~'
-alias mem='ps -xavh | more -EwSq~'
-alias mysqld_kill='ps aux | grep mysqld | grep -v grep | tabify | cut -f 2 | sudo xargs kill'
-alias psc='ps -ar $*| less'
-alias psm='ps -xamv $* | less'
-alias psr='ps -xvmr $* | less'
-alias pss='ps aux | tr "\n" "\0" | xargs -0 -n1 echo | grep -i $1'
-alias zombies='ps -Av | grep " Z " | grep -v grep'
+alias pss='ps aux | grep -v grep | grep -i $@'
 
 #
 # Text utils
@@ -42,10 +34,7 @@ alias zombies='ps -Av | grep " Z " | grep -v grep'
 # Logs: tail recent log files which names match a grep argument.
 # Example: logs -P '(apa|error|sys)' | prism -m
 logs() {
-    find {/usr/local,/sw,}/var/log{/apache2,} -atime -3 -type file -and -name '*[._]log' -print0 2>/dev/null | \
-        grep -zZ $* | \
-        sort -zu | \
-        xargs -0 tail -f
+    find {/usr/local,/sw,}/var/log{/apache2,} -type f -name '*[._]log' -and -atime -3 -print 2>/dev/null
 }
 
 replace () {

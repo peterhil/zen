@@ -1,0 +1,37 @@
+# ==============================================================================
+# Plugins
+# ------------------------------------------------------------------------------
+
+zplugin ice wait"0" blockf
+zplugin light zsh-users/zsh-completions
+
+zplugin ice wait"0" atload"_zsh_autosuggest_start"
+zplugin light zsh-users/zsh-autosuggestions
+
+zplugin ice wait"0" silent atinit"zpcompinit; zpcdreplay"
+zplugin light zdharma/fast-syntax-highlighting
+
+
+## Old oh-my-zsh plugins
+
+# completion
+# directory
+# editor
+# environment
+# git
+# haskell
+# history
+# history-substring-search
+# homebrew
+# node
+# osx
+# prompt
+# python
+# rails
+# rsync
+# ruby
+# spectrum
+# syntax-highlighting
+# terminal
+# tmux
+# utility

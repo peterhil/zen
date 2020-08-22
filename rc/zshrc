@@ -5,12 +5,16 @@ debug ZSHRC
 
 
 #
-# Prezto zshrc
+# Zplugin
 #
-require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/init.zsh
+require "${ZDOTDIR:-$HOME}"/.zplugin/bin/zplugin.zsh
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+require "${ZDOTDIR:-$HOME}"/.zen/rc/zpluginrc
 
 #
 # Command history
+# http://zsh.sourceforge.net/Doc/Release/Options.html#History
 #
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
@@ -22,7 +26,7 @@ export SAVEHIST=50000
 # ignoredups	| don't save lines matching the previous history entry
 # ignoreboth	| use both 'ignorespace' and 'ignoredups'
 # erasedups	  | eliminate duplicates across the whole history
-export HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}erasedups
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoreboth
 
 # Make some commands not show up in history
 export HISTIGNORE=${HISTIGNORE:-"shutdown*:halt*:poweroff*:rm -rf*"}
@@ -33,11 +37,30 @@ export HISTTIMEFORMAT=${HISTTIMEFORMAT:-"%Y-%m-%d %H:%M:%S"}
 #
 # Options
 #
-bindkey -e
-setopt appendhistory autocd notify
+setopt append_history
+setopt auto_cd
+setopt auto_pushd
+setopt chase_dots
+setopt hist_expire_dups_first
+setopt hist_find_no_dups
+setopt hist_no_functions
+setopt hist_reduce_blanks
+setopt notify
 unsetopt beep
-unsetopt correct_all
-#[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
+#unsetopt correct_all
+
+#
+# Key bindings
+#
+bindkey -e
+
+# History search keys
+bindkey "^[[1;5A" history-incremental-pattern-search-backward  # C-Up
+bindkey "^[[1;5B" history-incremental-pattern-search-forward  # C-Down
+
+#
+# Load ZSH modules
+#
 
 # Completion
 autoload -Uz compinit
@@ -53,11 +76,15 @@ promptinit
 if test 'root' = $(whoami); then
     prompt fade red
 else
-    prompt fade black black grey
+    prompt fade magenta white black
 fi
 
 # Zsh builtin modules
 autoload -U zmv
+
+#
+# Utilities
+#
 
 # Aliases
 require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases

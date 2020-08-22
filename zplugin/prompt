@@ -1,0 +1,14 @@
+# ==============================================================================
+# Prompt
+# ------------------------------------------------------------------------------
+
+# Load theme from OMZ
+# zplugin snippet OMZ::themes/cloud.zsh-theme
+
+# Load normal Github plugin with theme depending on OMZ Git library
+# zplugin light NicoSantangelo/Alpharized
+
+# Minimal ZSH plugin with async git prompt
+zplugin load agkozak/agkozak-zsh-prompt
+
+setopt promptsubst

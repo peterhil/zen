@@ -1,6 +1,20 @@
 #!/bin/zsh
 
 #
+# Shell utils
+#
+
+# Processes
+alias agents='launchctl list | cut -f3 | grep -v Label | sort -u'
+alias cpu='ps -vxamrhw | more -EwSq~'
+alias mem='ps -xavh | more -EwSq~'
+alias psc='ps -ar $*| less'
+alias psm='ps -xamv $* | less'
+alias psr='ps -xvmr $* | less'
+alias zombies='ps -Av | grep " Z " | grep -v grep'
+
+
+#
 # Applications
 #
 

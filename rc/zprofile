@@ -4,27 +4,19 @@ quiet stopwatch
 debug ZPROFILE
 
 #
-# Prezto zprofile
-#
-require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zprofile
-
-#
 # Text editing - override these in ~/.zprofile.local if needed
 #
-export LC_CTYPE='en_US.UTF-8'
-export LC_ALL='en_US.UTF-8'
-
-export CHARSET='UTF-8'
-export DISPLAY=':0.0'
-
 export EDITOR='emacs -nw'
-export VISUAL='emacs'
 export ALTERNATE_EDITOR='emacs'
-export PAGER='less'
-# export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"
+export VISUAL='emacs'
 
-export NNTPSERVER='news.newshosting.com'
+export NNTPSERVER='news.inet.fi'
+export PAGER='less'
+
 export TZ='Europe/Helsinki'
+
+# export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"
+#[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
 
 #
 # Paths

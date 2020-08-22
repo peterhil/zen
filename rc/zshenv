@@ -15,14 +15,14 @@ quiet stopwatch
 debug "ZSHENV"
 
 #
-# Prezto zshenv
+# Environment - override these in ~/.zshenv.local if needed
 #
-require "${ZDOTDIR:-$HOME}"/.zen/lib/zprezto/runcoms/zshenv
-
-#
-# Environment
-#
-export RSYNC_RSH='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+export CHARSET='UTF-8'
+export DISPLAY=':0.0'
+export LC_ALL='en_US.UTF-8'
+export LC_CTYPE='en_US.UTF-8'
+export RSYNC_RSH='ssh'
+export TZ='Europe/Helsinki'
 
 #
 # Local zshenv
