@@ -79,7 +79,7 @@ promptinit
 if test 'root' = $(whoami); then
     prompt fade red
 else
-    prompt fade magenta white black
+    prompt fade blue
 fi
 
 # Zsh builtin modules
