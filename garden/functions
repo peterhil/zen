@@ -1,0 +1,39 @@
+#!/bin/zsh
+
+quiet stopwatch
+debug FUNCTIONS
+
+
+#
+# GPG
+#
+
+# Alternatively use zrezto gpgmodule
+gpg-agent-start () {
+    if [[ -z $(pgrep gpg-agent) ]]
+    then
+        debug "GPG agent is being started"
+        # eval $(gpg-agent --daemon -q)
+        eval $(gpg-connect-agent --quiet /bye)
+        export GPG_TTY=$(tty)
+        export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+    else
+        debug "GPG agent is already running"
+    fi
+}
+
+#
+# SSH
+#
+ssh-agent-start () {
+    if [[ -z $(pgrep ssh-agent) ]]
+    then
+        debug "SSH agent is being started"
+        eval $(ssh-agent -s)
+    else
+        debug "SSH agent is already running"
+    fi
+}
+
+
+debug_loadtime FUNCTIONS

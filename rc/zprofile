@@ -31,6 +31,18 @@ path=(
 export PATH
 
 #
+# Zen garden
+#
+require "${ZDOTDIR:-$HOME}"/.zen/garden/functions
+
+# Do only when not in an SSH session
+if [[ -z $SSH_CLIENT ]]
+then
+    gpg-agent-start
+    ssh-agent-start
+fi
+
+#
 # Local zprofile
 #
 require "${ZDOTDIR:-$HOME}"/.zprofile.local
