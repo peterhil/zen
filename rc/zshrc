@@ -39,6 +39,7 @@ export HISTTIMEFORMAT=${HISTTIMEFORMAT:-"%Y-%m-%d %H:%M:%S"}
 #
 setopt append_history
 setopt auto_cd
+setopt auto_menu
 setopt auto_pushd
 setopt chase_dots
 setopt hist_expire_dups_first
