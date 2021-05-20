@@ -62,11 +62,13 @@ bindkey "^[[1;5B" history-incremental-pattern-search-forward  # C-Down
 # Load ZSH modules
 #
 
-# Completion
+#
+# Autoloads
+#
+
 autoload -Uz compinit
 compinit -i
 
-# Shell colors
 autoload -U colors
 colors
 
@@ -83,13 +85,9 @@ fi
 autoload -U zmv
 
 #
-# Utilities
+# Zen garden
 #
-
-# Aliases
 require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases
-
-# Zen utils
 require "${ZDOTDIR:-$HOME}"/.zen/garden/utils
 
 #
