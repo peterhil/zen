@@ -9,8 +9,9 @@ alias rm='nocorrect rm'
 alias l='ls -lG'
 alias ll='l -A'
 alias lll='l -a'
-alias lsd='l -d . ..'
+# alias lsd='l -d . ..'
 alias lss='l -sS'
+alias lsize='ls -lx1hs'
 
 # Search is like ag/ack:
 alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=vendor $1'
