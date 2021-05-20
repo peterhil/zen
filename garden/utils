@@ -22,8 +22,8 @@ require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
 # Fink
 # require '/sw/bin/init.sh'
 
-# Nix
-require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
+# Nix - single user install only
+# require "${ZDOTDIR:-$HOME}/.nix-profile/etc/profile.d/nix.sh"
 
 #
 # Shells
