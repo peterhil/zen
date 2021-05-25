@@ -98,3 +98,4 @@ require "${ZDOTDIR:-$HOME}"/.zshrc.local
 
 
 debug_loadtime ZSHRC
+debug

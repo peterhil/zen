@@ -31,3 +31,4 @@ require "${ZDOTDIR:-$HOME}"/.zshenv.local
 
 
 debug_loadtime ZSHENV
+debug

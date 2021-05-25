@@ -6,4 +6,5 @@ debug ZLOGIN
 
 
 debug_loadtime ZLOGIN
-debug "ZSH startup: $(float_print $SECONDS) seconds\n"
+debug "ZSH startup: $(float_print $SECONDS) seconds"
+debug

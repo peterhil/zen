@@ -6,3 +6,4 @@ debug ZLOGOUT
 
 
 debug_loadtime ZLOGOUT
+debug

@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-quiet stopwatch
-debug ZPLUGINRC
-
 #
 # Zplugin configuration
 #
@@ -14,6 +11,3 @@ zplugin cdclear -q # <- forget completions provided up to this moment
 # source $HOME/.zen/zplugin/prompt
 source $HOME/.zen/zplugin/history
 source $HOME/.zen/zplugin/plugins
-
-
-debug_loadtime ZPLUGINRC
