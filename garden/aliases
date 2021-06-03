@@ -26,7 +26,7 @@ alias stdout='$1 2>&1'  # Combine stderr to stdout
 alias xargs0='tr "\n" "\0" | xargs -0'
 
 # Processes
-alias pss='ps aux | grep -v grep | grep -i $@'
+alias pss='ps aux | grep -v grep | grep --color -i $@'
 
 #
 # Text utils
