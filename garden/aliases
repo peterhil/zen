@@ -113,6 +113,10 @@ alias ccl64="rlwrap ccl64"
 
 # Utils
 
+argv() {
+  python -c 'import sys; print(sys.argv[1:])' "$@"
+}
+
 about() {
     # Grep manpages by sections
     local cmd=$1; shift
