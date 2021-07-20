@@ -24,8 +24,8 @@ export TZ='Europe/Helsinki'
 typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
+    /opt/local/bin  # Macports or manually installed
     /usr/local/{bin,sbin}
-    /opt/local/bin  # Manually installed software
     $path
 )
 export PATH
