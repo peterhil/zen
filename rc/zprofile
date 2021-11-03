@@ -6,7 +6,7 @@ debug ZPROFILE
 #
 # Text editing - override these in ~/.zprofile.local if needed
 #
-export EDITOR='emacs -nw'
+export EDITOR='emacs -nw -q'
 export ALTERNATE_EDITOR='emacs'
 export VISUAL='emacs'
 
