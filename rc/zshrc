@@ -7,10 +7,10 @@ debug ZSHRC
 #
 # Zplugin
 #
-require "${ZDOTDIR:-$HOME}"/.zplugin/bin/zplugin.zsh
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
-require "${ZDOTDIR:-$HOME}"/.zen/rc/zpluginrc
+# require "${ZDOTDIR:-$HOME}"/.zplugin/bin/zplugin.zsh
+# autoload -Uz _zplugin
+# (( ${+_comps} )) && _comps[zplugin]=_zplugin
+# require "${ZDOTDIR:-$HOME}"/.zen/rc/zpluginrc
 
 #
 # Command history
