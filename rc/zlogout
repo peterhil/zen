@@ -4,6 +4,10 @@ quiet stopwatch
 debug ZLOGOUT
 
 
+#
+# Local zlogout
+#
+require "${ZDOTDIR:-$HOME}"/.zlogout.local
 
 debug_loadtime ZLOGOUT
 debug
