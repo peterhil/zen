@@ -1,14 +1,19 @@
 #!/usr/bin/env zsh
-
 #
-# Init zshenv
+# ZSHENV - always sourced
 #
+# Order and purpose of files:
+#
+# every time:   zshenv
+# login once:   zprofile
+# interactive:  zshrc
+# login:        zlogin
+# logout:       zlogout
 
-# ZSH startup debugging, uncomment next line to enable
+# Startup debugging, use env variable or uncomment next line:
 # ZSH_DEBUG=1
 export ZSH_DEBUG=${ZSH_DEBUG:-0}
 
-# Zsh tools
 . ~/.zen/garden/tools
 
 quiet stopwatch
@@ -28,7 +33,6 @@ export TZ='Europe/Helsinki'
 # Local zshenv
 #
 require "${ZDOTDIR:-$HOME}"/.zshenv.local
-
 
 debug_loadtime ZSHENV
 debug

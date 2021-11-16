@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
+#
+# ZSHRC - run on interactive shells
+#
 
 quiet stopwatch
 debug ZSHRC

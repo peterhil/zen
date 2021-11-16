@@ -1,9 +1,17 @@
 #!/usr/bin/env zsh
+#
+# ZLOGIN - run after zshrc on login shells
+#
 
 quiet stopwatch
 debug ZLOGIN
 
+echo -n "Welcome to "; hostname
 
+#
+# Local zlogin
+#
+require "${ZDOTDIR:-$HOME}"/.zlogin.local
 
 debug_loadtime ZLOGIN
 debug "ZSH startup: $(float_print $SECONDS) seconds"

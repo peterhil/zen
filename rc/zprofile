@@ -1,4 +1,7 @@
 #!/usr/bin/env zsh
+#
+# ZPROFILE - run once on login shells
+#
 
 quiet stopwatch
 debug ZPROFILE
@@ -46,7 +49,6 @@ fi
 # Local zprofile
 #
 require "${ZDOTDIR:-$HOME}"/.zprofile.local
-
 
 debug_loadtime ZPROFILE
 debug
