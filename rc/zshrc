@@ -19,7 +19,7 @@ debug ZSHRC
 # Command history
 # http://zsh.sourceforge.net/Doc/Release/Options.html#History
 #
-export HISTFILE=~/.zsh_history
+export HISTFILE=~/.zhistory
 export HISTSIZE=10000
 export SAVEHIST=50000
 
