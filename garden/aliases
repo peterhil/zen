@@ -1,10 +1,11 @@
 #!/usr/bin/env zsh
+#
+# Aliases
+#
 
 #
 # Shell utils
 #
-
-# Basic commands
 alias rm='nocorrect rm'
 alias l='ls -lG'
 alias ll='l -A'
@@ -61,7 +62,6 @@ trim () {
 #
 # Programming
 #
-
 alias todo='search -E "((//|#|--)\s+(TODO|REMOVEME|FIXME))"'
 alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
 
@@ -134,11 +134,11 @@ alias git-assumed="git ls-files -v | grep ^h | cut -c 3-"
 alias gbm='git diff `git-base-diff test-coverage`'
 alias git-open-new="gss | grep -E '^??' | tabify | cut -f2 | xargs open"
 
-# Emacsclient
-alias emx-start="emacsclient -e '(server-start)'"
-alias emx-kill="emacsclient -e '(server-shutdown)'"
+# Emacs
+alias emc-start="emacsclient -e '(server-start)'"
+alias emc-kill="emacsclient -e '(server-shutdown)'"
 alias emc="emacsclient -t"  # CLI emacs
-alias emx="emacsclient -n"  # Open an Emacs editor with GUI
+alias emx='emacs -nw -q'
 
 # Readline rlwrap
 # alias node="env NODE_NO_READLINE=1 rlwrap node"
@@ -146,14 +146,14 @@ alias sbcl="rlwrap sbcl"
 alias ccl="rlwrap ccl"
 alias ccl64="rlwrap ccl64"
 
-
+#
 # Utils
-
-argv() {
+#
+argv () {
   python -c 'import sys; print(sys.argv[1:])' "$@"
 }
 
-about() {
+about () {
     # Grep manpages by sections
     local cmd=$1; shift
     man $cmd | grep_sections $* | doublelines
@@ -168,34 +168,27 @@ null_separate_sections () {
     ruby -0777 -pe 'gsub(/\n\n/, "\0")' | perl -pe 's/\n/ /'
 }
 
-grep_sections() {
+grep_sections () {
     # Grep input by sections (separated by two newlines)
     grep -B8 -A24 $* | striplines | removehyphens | null_separate_sections | \
 	xargs -0 -n1 echo | \
 	grep $*
 }
 
-
 # Haskell
-
 alias cabal-install-qt="cabal install $1 --ghc-options='-framework-path=$QT_DIR/lib'"
 alias cabal-installed-pkgs="ghc-pkg --simple-output list | ruby -pe 'gsub(/ /, \"\n\")' | ruby -pe 'gsub(/-[\d\.]+$/, \"\")' | sort -u"
 alias cabal-license="grep -E '(^\* |License:)' | ruby -pe 'gsub(/\s+\([^)]+\)\s+/, \"\")' | ruby -pe 'gsub(/(^\* |\s+License)/, \"\")'"
 alias cabal-all-licenses="cabal-installed-pkgs | xargs cabal info | cabal-license"
 
-
 # Ruby
-
 alias rb='rbenv'
 alias be='bundle exec'
-
-# Abbreviation for "gem install".
 gi() {
     gem install $@
     rbenv rehash
     rehash
 }
-
 
 #
 # Databases
@@ -215,26 +208,22 @@ alias pg="sudo -u postgres pg_ctl $1 -D $PGDATA -l $PGDATA/pgsql.log"
 #
 # System specific aliases
 #
-
 if os_type 'Darwin'; then
     require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_osx
 elif os_type 'Linux'; then
     require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_linux
+elif os_type 'FreeBSD'; then
+    require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_freebsd
 fi
 
 #
 # Services
 #
-
 alias weather='curl http://wttr.in'
 alias moon='curl http://wttr.in/Moon'
-
-cheat () {
-    curl "cheat.sh/$1"
-}
+cheat () { curl "cheat.sh/$1" }
 
 #
 # Local aliases
 #
-
 require "${ZDOTDIR:-$HOME}"/.aliases.local

@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+#
+# FreeBSD aliases
+#
+
+# Pkg aliases - needs ripgrep (rg)
+#
+alias pkg-source-sizes="rg -I \"^SIZE \(\" ${1:-.}"
+alias pkg-switch-solumns="awk -F' ' '{print int((\$4+1)/2048),\$2}' OFS=' ' -"
+
+function pkg-source-size () {
+    pkg-source-sizes $2 | rg -I $1 | rg -Iv '/' | pkg-switch-solumns | sort -n | more
+}
+
+function pkg-size () {
+    pkg rquery -Ux "%sb\t%n\t\t%c" $1 | sort -n | awk -F'\t' '{ print int(($1+1)/2048) "k",$2,$3,$4 }' OFS='\t' | less -F
+}

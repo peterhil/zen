@@ -78,7 +78,7 @@ require () {
 # Can be used in if statements like this:
 # if os_type 'Darwin'; then echo 'Apple is also thinking differently about Unix philosophy...'; fi
 os_type() {
-    test "$1" = `uname -s`
+    test "$1" = $(uname -s)
 }
 
 
