@@ -62,30 +62,19 @@ bindkey '^[[1;5A' history-beginning-search-backward  # C-up
 bindkey '^[[1;5B' history-beginning-search-forward  # C-down
 
 #
-# Load ZSH modules
+# Autoload ZSH modules
 #
-
-#
-# Autoloads
-#
-
-autoload -Uz compinit
-compinit -i
-
-autoload -U colors
-colors
+autoload -Uz compinit; compinit -i
+autoload -U colors; colors
+autoload -U promptinit; promptinit
+autoload -U zmv
 
 # Prompt
-autoload -U promptinit
-promptinit
 if test 'root' = $(whoami); then
     prompt fade red
 else
-    prompt fade blue
+    prompt fade white black
 fi
-
-# Zsh builtin modules
-autoload -U zmv
 
 #
 # Zen garden
@@ -97,7 +86,6 @@ require "${ZDOTDIR:-$HOME}"/.zen/garden/utils
 # Local zshrc
 #
 require "${ZDOTDIR:-$HOME}"/.zshrc.local
-
 
 debug_loadtime ZSHRC
 debug
