@@ -57,10 +57,9 @@ unsetopt beep
 # Key bindings
 #
 bindkey -e
-
-# History search keys
-bindkey "^[[1;5A" history-incremental-pattern-search-backward  # C-Up
-bindkey "^[[1;5B" history-incremental-pattern-search-forward  # C-Down
+# History search keys (Use Ctrl-V to find the ANSI escape sequences)
+bindkey '^[[1;5A' history-beginning-search-backward  # C-up
+bindkey '^[[1;5B' history-beginning-search-forward  # C-down
 
 #
 # Load ZSH modules
