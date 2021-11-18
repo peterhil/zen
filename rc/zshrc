@@ -82,6 +82,11 @@ fi
 #
 require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases
 require "${ZDOTDIR:-$HOME}"/.zen/garden/utils
+require "${ZDOTDIR:-$HOME}"/.zen/garden/functions
+
+# GPG and SSH agents
+ssh-agent-start
+gpg-agent-start
 
 #
 # Local zshrc

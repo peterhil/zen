@@ -14,9 +14,10 @@ export DISPLAY=':0.0'
 
 alias emacs-daemon-p='ps -xe -o args | grep -s "^emacs --daemon"'
 if ! $(emacs-daemon-p -q); then
+    echo "Emacs daemon shall start"
     emacs --daemon
 else
-    echo "Emacs server is running"
+    debug "Emacs daemon is hexing"
 fi
 
 if [[ -z "${EDITOR}" ]] ; then
@@ -47,18 +48,6 @@ path=(
 )
 export PATH
 export MANPATH="/opt/local/share/man:$MANPATH"
-
-#
-# Zen garden
-#
-require "${ZDOTDIR:-$HOME}"/.zen/garden/functions
-
-# Do only when not in an SSH session
-if [[ -z $SSH_CLIENT ]]
-then
-    gpg-agent-start
-    ssh-agent-start
-fi
 
 #
 # Local zprofile

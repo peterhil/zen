@@ -10,15 +10,14 @@ debug FUNCTIONS
 
 # Alternatively use zrezto gpgmodule
 gpg-agent-start () {
-    if [[ -z $(pgrep gpg-agent) ]]
-    then
-        debug "GPG agent is being started"
-        # eval $(gpg-agent --daemon -q)
-        eval $(gpg-connect-agent --quiet /bye)
+    if not_running gpg-agent ; then
+        echo "Summoning GPG agent"
+        eval $(gpg-agent --daemon -q)
         export GPG_TTY=$(tty)
         export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
     else
-        debug "GPG agent is already running"
+        debug "GPG agent is crypting"
+        eval $(gpg-connect-agent --quiet /bye)
     fi
 }
 
@@ -26,12 +25,11 @@ gpg-agent-start () {
 # SSH
 #
 ssh-agent-start () {
-    if [[ -z $(pgrep ssh-agent) ]]
-    then
-        debug "SSH agent is being started"
+    if not_running ssh-agent ; then
+        echo -n "Hello from SSH "
         eval $(ssh-agent -s)
     else
-        debug "SSH agent is already running"
+        debug "SSH agent is running"
     fi
 }
 
