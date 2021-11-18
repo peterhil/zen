@@ -49,6 +49,7 @@ setopt hist_expire_dups_first
 setopt hist_find_no_dups
 setopt hist_no_functions
 setopt hist_reduce_blanks
+setopt share_history
 setopt notify
 unsetopt beep
 #unsetopt correct_all
