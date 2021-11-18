@@ -29,6 +29,8 @@ export LC_CTYPE='en_US.UTF-8'
 export RSYNC_RSH='ssh'
 export TZ='Europe/Helsinki'
 
+export USE_AGENTS=1
+
 #
 # Local zshenv
 #

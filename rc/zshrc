@@ -85,8 +85,10 @@ require "${ZDOTDIR:-$HOME}"/.zen/garden/utils
 require "${ZDOTDIR:-$HOME}"/.zen/garden/functions
 
 # GPG and SSH agents
-ssh-agent-start
-gpg-agent-start
+if test "$USE_AGENTS" -ne 0 ; then
+    ssh-agent-start
+    gpg-agent-start
+fi
 
 #
 # Local zshrc
