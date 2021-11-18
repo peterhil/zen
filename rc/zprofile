@@ -9,13 +9,27 @@ debug ZPROFILE
 #
 # Text editing - override these in ~/.zprofile.local if needed
 #
-export EDITOR='emacs -nw -q'
-export ALTERNATE_EDITOR='emacs'
-export VISUAL='emacs'
+export CHARSET='UTF-8'
+export DISPLAY=':0.0'
+
+alias emacs-daemon-p='ps -xe -o args | grep -s "^emacs --daemon"'
+if ! $(emacs-daemon-p -q); then
+    emacs --daemon
+else
+    echo "Emacs server is running"
+fi
+
+if [[ -z "${EDITOR}" ]] ; then
+    export ALTERNATE_EDITOR='emq'
+    export EDITOR='emacsclient'
+fi
+if [[ -n "${EDITOR}" && -z "${VISUAL}" ]] ; then
+  export VISUAL="${EDITOR}"
+  # export VISUAL='st -f monospace-12 emacs -nw -q'
+fi
+export PAGER='less -F'
 
 export NNTPSERVER='news.inet.fi'
-export PAGER='less'
-
 export TZ='Europe/Helsinki'
 
 # export INPUTRC="${ZDOTDIR:-$HOME}/.inputrc"

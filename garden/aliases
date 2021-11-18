@@ -135,10 +135,13 @@ alias gbm='git diff `git-base-diff test-coverage`'
 alias git-open-new="gss | grep -E '^??' | tabify | cut -f2 | xargs open"
 
 # Emacs
-alias emc-start="emacsclient -e '(server-start)'"
+alias emc-start="emacsclient -a '' -e '(server-start)'"
 alias emc-kill="emacsclient -e '(server-shutdown)'"
 alias emc="emacsclient -t"  # CLI emacs
+# Emacsclient uses alternate editor, see zprofile
+function emq () { emacs -nw -q "$@" }
 alias emx='emacs -nw -q'
+alias e=emc
 
 # Readline rlwrap
 # alias node="env NODE_NO_READLINE=1 rlwrap node"
