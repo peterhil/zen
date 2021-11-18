@@ -46,6 +46,7 @@ path=(
     $path
 )
 export PATH
+export MANPATH="/opt/local/share/man:$MANPATH"
 
 #
 # Zen garden
