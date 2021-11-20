@@ -13,6 +13,9 @@ alias lll='l -a'
 # alias lsd='l -d . ..'
 alias lss='l -sS'
 alias lsize='ls -lx1hs'
+alias ...='../..'
+alias ....='../../..'
+alias .....='../../../..'
 
 function lsz () {
     local dir="$1"; shift
