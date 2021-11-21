@@ -90,6 +90,15 @@ if test "$USE_AGENTS" -ne 0 ; then
     gpg-agent-start
 fi
 
+# Emacs daemon
+alias emacs-daemon-p='ps -xe -o args | grep -s "^emacs --daemon"'
+if ! $(emacs-daemon-p -q); then
+    echo "Emacs daemon shall start"
+    emacs --daemon
+else
+    debug "Emacs daemon is hexing"
+fi
+
 #
 # Local zshrc
 #

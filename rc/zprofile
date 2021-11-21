@@ -12,14 +12,6 @@ debug ZPROFILE
 export CHARSET='UTF-8'
 export DISPLAY=':0.0'
 
-alias emacs-daemon-p='ps -xe -o args | grep -s "^emacs --daemon"'
-if ! $(emacs-daemon-p -q); then
-    echo "Emacs daemon shall start"
-    emacs --daemon
-else
-    debug "Emacs daemon is hexing"
-fi
-
 if [[ -z "${EDITOR}" ]] ; then
     export ALTERNATE_EDITOR='emq'
     export EDITOR='emacsclient'
@@ -28,6 +20,7 @@ if [[ -n "${EDITOR}" && -z "${VISUAL}" ]] ; then
   export VISUAL="${EDITOR}"
   # export VISUAL='st -f monospace-12 emacs -nw -q'
 fi
+
 export PAGER='less -F'
 
 export NNTPSERVER='news.inet.fi'
