@@ -9,6 +9,7 @@
 alias rm='nocorrect rm'
 alias l='ls -lG'
 alias ll='l -A'
+alias lh='l -ah'
 alias lll='l -a'
 # alias lsd='l -d . ..'
 alias lss='l -sS'
@@ -65,8 +66,9 @@ trim () {
 #
 # Programming
 #
-alias todo='search -E "((//|#|--)\s+(TODO|REMOVEME|FIXME))"'
+alias todo='search -E "((//|#|--|;;?)\s+(TODO|REMOVEME|FIXME))"'
 alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
+alias zmake='gmake CC="zig cc" CXX="zig c++"'
 
 # Git
 
