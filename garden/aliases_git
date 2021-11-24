@@ -1,0 +1,71 @@
+#!/usr/bin/env zsh
+#
+# Git aliases
+#
+
+alias ga='git add'
+alias gam="git status -s | grep '^.M' | cut -c4- | cut -d' ' -f3 | xargs git add"
+alias gb='git branch'
+alias gba='git branch -av'
+alias gc='git commit'
+alias gco='git checkout'
+alias gcp='git cherry-pick'
+alias gd='git diff'
+alias gdc='git diff --cached'
+alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
+alias ggpull='git pull origin $(current_branch)'
+alias ggpush='git push origin $(current_branch)'
+alias gh='git show'
+alias glo='git log --oneline'
+alias gr='git remote'
+alias gs='git stash'
+alias gsp='git stash pop'
+alias gss='git status -s'
+alias gst='git status'
+
+alias git-assume="git update-index --assume-unchanged '$@'"
+alias git-assumed="git ls-files -v | grep ^h | cut -c 3-"
+alias git-current-branch="git rev-parse --abbrev-ref HEAD 2>/dev/null"
+alias git-open-new="gss | grep -E '^??' | tabify | cut -f2 | xargs open"
+alias git-unassume="git update-index --no-assume-unchanged '$@'"
+
+function current_repository () {
+    git remote -v | cut -d':' -f 2
+}
+
+function current_branch () {
+	ref=$(git symbolic-ref HEAD 2> /dev/null)  || ref=$(git rev-parse --short HEAD 2> /dev/null)  || return
+	echo ${ref#refs/heads/}
+}
+
+# Return difference of two git branches from a common merge commit
+function git-branch-diff () {
+    local current=$(git-current-branch)
+
+    if [[ ! -n $current ]]; then
+        echo "Error: Not a git repository." 1>&2
+        return 1
+    fi
+    local from_branch=$1
+    local to_branch=${2:-$current}
+
+    git diff $(git merge-base "$from_branch" "$to_branch")..$to_branch
+}
+
+# Return difference of one line log messages of two git branches
+function git-log-diff () {
+    local current=$(git-current-branch)
+
+	if [[ ! -n $current ]]; then
+		echo "Error: Not a git repository." >&2
+		return 1
+	fi
+    local from_branch=$1
+    local to_branch=${2:-$current}
+
+	diff -u <(git log --oneline $from_branch) <(git log --oneline $to_branch)
+}
+
+function git-log-renames () {
+    git log --name-only --format=format: --follow --find-copies-harder -- $1 | grep -v '^$' | sort -u
+}
