@@ -37,7 +37,7 @@ alias öö=man
 
 alias ltail='less -Ri +F'
 alias mmv='noglob zmv -W' # Example: mmv *.conf.orig orig/*.conf
-alias paths="echo $PATH | perl -pe 's/:/\n/g'"
+alias paths='echo $PATH | perl -pe "s/:/\n/g"'
 alias stdout='$@ 2>&1'  # Combine stderr to stdout
 alias xargs0='tr "\n" "\0" | xargs -0'
 
