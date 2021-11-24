@@ -20,15 +20,23 @@ alias lsize='ls -lx1hs'
 alias lss='l -sS'
 alias rm='nocorrect rm'
 
-lsz () {
-    local dir="$1"; shift
-    find $dir -type f | xargs ls -lah1s | sort -n $@
+#
+# Manual pages
+#
+man () {
+    # Colourful man pages
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[45;93m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    command man "$@"
 }
-
-# mmv *.conf.orig orig/*.conf
-alias mmv='noglob zmv -W'
+alias öö=man
 
 alias ltail='less -Ri +F'
+alias mmv='noglob zmv -W' # Example: mmv *.conf.orig orig/*.conf
 alias paths="echo $PATH | perl -pe 's/:/\n/g'"
 alias stdout='$@ 2>&1'  # Combine stderr to stdout
 alias xargs0='tr "\n" "\0" | xargs -0'
@@ -49,9 +57,15 @@ alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr
 # Find largest/smallest files in a directory
 alias biggest_files='find . -type f -ls | awk '{print $7 " " $11}' | sort -nr | head'
 alias smallest_files='find . -type f -ls | awk '{print $7 " " $11}' | sort -n | head'
+lsz () {
+    local dir="$1"; shift
+    find $dir -type f | xargs ls -lah1s | sort -n $@
+}
 
+#
 # Logs
 #
+
 # Example: tail log files written in the last month, whose name match the grep argument.
 # logs -atime -30d | grep -E '(sys)' | xargs tail -f
 logs () {
@@ -125,28 +139,35 @@ require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_git
 
 alias todo='search -E "((//|#|--|;;?)\s+(TODO|REMOVEME|FIXME))"'
 alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
-alias zmake='gmake CC="zig cc" CXX="zig c++"'
 
-# Readline rlwrap
-# alias node="env NODE_NO_READLINE=1 rlwrap node"
-alias sbcl="rlwrap sbcl"
-alias ccl="rlwrap ccl"
-alias ccl64="rlwrap ccl64"
+# Javascript
+alias wp=webpack
+alias ava='nocorrect ava'
 
-# Haskell
-alias cabal-install-qt="cabal install $1 --ghc-options='-framework-path=$QT_DIR/lib'"
-alias cabal-installed-pkgs="ghc-pkg --simple-output list | ruby -pe 'gsub(/ /, \"\n\")' | ruby -pe 'gsub(/-[\d\.]+$/, \"\")' | sort -u"
-alias cabal-license="grep -E '(^\* |License:)' | ruby -pe 'gsub(/\s+\([^)]+\)\s+/, \"\")' | ruby -pe 'gsub(/(^\* |\s+License)/, \"\")'"
-alias cabal-all-licenses="cabal-installed-pkgs | xargs cabal info | cabal-license"
+# Nix
+alias nix-meta='nix-shell -p nix-info --run "nix-info -m"'
+alias nix-node-all='nix-env -qaPA nixpkgs.nodePackages'
+alias nix-node='nix-env -qaPA nixpkgs.nodePackages | grep $1'
+
+# Python
+alias pim='python manage.py'
 
 # Ruby
 alias rb='rbenv'
 alias be='bundle exec'
-gi() {
-    gem install $@
-    rbenv rehash
-    rehash
-}
+gi () { gem install $@ && rbenv rehash && rehash }
+
+# Zig
+alias zt='zig test'
+alias zr='zig run'
+alias zmake='gmake CC="zig cc" CXX="zig c++"'
+
+# Readline rlwrap
+alias ccl64="rlwrap ccl64"
+alias ccl="rlwrap ccl"
+alias fennel='rlwrap fennel'
+alias node="env NODE_NO_READLINE=1 rlwrap node"
+alias sbcl="rlwrap sbcl"
 
 #
 # Databases
@@ -154,10 +175,6 @@ gi() {
 
 # PostgreSQL
 alias pg="sudo -u postgres pg_ctl $1 -D $PGDATA -l $PGDATA/pgsql.log"
-# alias postgres_server_start='sudo -u postgres postgres -D /opt/local/var/db/postgresql91/defaultdb &'
-
-# MySQL
-# alias mysqld_start='sudo mysqld_safe --defaults-file=/opt/local/etc/mysql55/my.cnf --socket=/opt/local/var/run/mysql55/mysqld.sock --user=_mysql &'
 
 #
 # System specific aliases

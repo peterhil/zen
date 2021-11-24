@@ -3,8 +3,13 @@
 #
 # Shell utils
 #
+alias lsc='\gls -lGN --color=auto'
+alias l='lsc -l'
+alias ll='lsc -la'
 
+#
 # Processes
+#
 alias agents='launchctl list | cut -f3 | grep -v Label | sort -u'
 alias cpu='ps -vxamrhw | more -EwSq~'
 alias mem='ps -xavh | more -EwSq~'
@@ -13,12 +18,13 @@ alias psm='ps -xamv $* | less'
 alias psr='ps -xvmr $* | less'
 alias zombies='ps -Av | grep " Z " | grep -v grep'
 
-
 #
 # Applications
 #
-
 alias app='open -a'
+alias chrome='open -a Google Chrome.app'
+alias edit='open -a Emacs.app'
+alias emacsapp='open -a Emacs.app'
 # alias aq="emacsclient -c -a aquamacs"
 
 # Replacement for Aquamacs' stupid Perl script
@@ -52,11 +58,9 @@ brew-installed() {
     ls -1 /usr/local/Cellar/
 }
 
-
 #
 # Property list files
 #
-
 alias plist-xml='plutil -convert xml1 -o - $1'
 alias plist='zargs -n1 -I{} plutil -convert xml1 -o - "{}"'
 alias plist-files="gfind . -name '*.plist' -printf '\n=== :: %p :: ===\n' -execdir plutil -convert xml1 -o - {} \;"
