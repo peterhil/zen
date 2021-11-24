@@ -90,9 +90,7 @@ if test "$USE_AGENTS" -ne 0 ; then
     gpg-agent-start
 fi
 
-# Emacs daemon
-alias emacs-daemon-p='ps -xe -o args | grep -s "^emacs --daemon"'
-if ! $(emacs-daemon-p -q); then
+if ! test $(process-count '^emacs --daemon') -gt 0 ; then
     echo "Emacs daemon shall start"
     emacs --daemon
 else

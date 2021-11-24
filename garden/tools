@@ -81,6 +81,10 @@ os_type () {
     test "$1" = $(uname -s)
 }
 
+process-count () {
+    ps -xe -o args | grep -s "$@" | grep -v grep | wc -l
+}
+
 not_running () {
     test $(pgrep "$1" | wc -l) -lt 1
 }
