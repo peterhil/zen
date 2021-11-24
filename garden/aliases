@@ -6,25 +6,50 @@
 #
 # Shell utils
 #
-alias rm='nocorrect rm'
-alias l='ls -lG'
-alias ll='l -A'
-alias lh='l -ah'
-alias lll='l -a'
-# alias lsd='l -d . ..'
-alias lss='l -sS'
-alias lsize='ls -lx1hs'
+
 alias ...='../..'
 alias ....='../../..'
 alias .....='../../../..'
 
-function lsz () {
-    local dir="$1"; shift
-    find $dir -type f | xargs ls -lah1s | sort -n $@
-}
+alias l='ls -lG'
+alias lh='l -ah'
+alias ll='l -A'
+alias lll='l -a'
+alias lsd='l -d'
+alias lsize='ls -lx1hs'
+alias lss='l -sS'
+alias rm='nocorrect rm'
 
-# mmv *.conf.orig orig/*.conf
-alias mmv='noglob zmv -W'
+#
+# Manual pages
+#
+man () {
+    # Colourful man pages
+    LESS_TERMCAP_md=$'\e[01;31m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[01;32m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[45;93m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    command man "$@"
+}
+alias öö=man
+
+alias ltail='less -Ri +F'
+alias mmv='noglob zmv -W' # Example: mmv *.conf.orig orig/*.conf
+alias paths='echo $PATH | perl -pe "s/:/\n/g"'
+alias stdout='$@ 2>&1'  # Combine stderr to stdout
+alias xargs0='tr "\n" "\0" | xargs -0'
+
+#
+# Finding things
+#
+
+# Locate commands on your path
+alias cmd='find $(paths) -name "$@" 2>/dev/null'
+
+# Processes
+alias pss='ps aux | grep -v grep | grep --color -i $@'
 
 # Search is like ag/ack:
 alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr --exclude-dir=.hg --exclude-dir=.svn --exclude-dir=vendor $1'
@@ -32,149 +57,37 @@ alias search='grep -r --exclude-dir=.git --exclude-dir=_darcs --exclude-dir=.bzr
 # Find largest/smallest files in a directory
 alias biggest_files='find . -type f -ls | awk '{print $7 " " $11}' | sort -nr | head'
 alias smallest_files='find . -type f -ls | awk '{print $7 " " $11}' | sort -n | head'
+lsz () {
+    local dir="$1"; shift
+    find $dir -type f | xargs ls -lah1s | sort -n $@
+}
 
-alias ltail='less -Ri +F'
-alias paths="echo $PATH | perl -pe 's/:/\n/g'"
-alias stdout='$@ 2>&1'  # Combine stderr to stdout
-alias xargs0='tr "\n" "\0" | xargs -0'
+#
+# Logs
+#
 
-# Processes
-alias pss='ps aux | grep -v grep | grep --color -i $@'
+# Example: tail log files written in the last month, whose name match the grep argument.
+# logs -atime -30d | grep -E '(sys)' | xargs tail -f
+logs () {
+    find {/usr/local,/opt/local,/sw,}/var/log{/apache2,/nginx,} -type f -name '*[._]log' -and $@ -print 2>/dev/null
+}
 
 #
 # Text utils
 #
 
-# Logs: tail recent log files which names match a grep argument.
-# Example: logs -P '(apa|error|sys)' | prism -m
-logs() {
-    find {/usr/local,/sw,}/var/log{/apache2,} -type f -name '*[._]log' -and -atime -3 -print 2>/dev/null
-}
-
-replace () {
-    perl -pe "s/$(echo $1)/$(echo $2)/g"
-}
 alias tabify="replace ' +' '\t'"
 alias untabify="replace '\t' '    '"
 alias quotelines="replace '^(.*)\n' '\"\1\"\n'"
 
-trim () {
-    # Works only when piped into
-    awk '{$1=$1};1'
-}
-
-#
-# Programming
-#
-alias todo='search -E "((//|#|--|;;?)\s+(TODO|REMOVEME|FIXME))"'
-alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
-alias zmake='gmake CC="zig cc" CXX="zig c++"'
-
-# Git
-
-current_repository () {
-	ref=$(git symbolic-ref HEAD 2> /dev/null)  || ref=$(git rev-parse --short HEAD 2> /dev/null)  || return
-	echo $(git remote -v | cut -d':' -f 2)
-}
-
-current_branch () {
-	ref=$(git symbolic-ref HEAD 2> /dev/null)  || ref=$(git rev-parse --short HEAD 2> /dev/null)  || return
-	echo ${ref#refs/heads/}
-}
-
-alias ga='git add'
-alias gb='git branch'
-alias gba='git branch -av'
-alias gc='git commit'
-alias gco='git checkout'
-alias gcp='git cherry-pick'
-alias gd='git diff'
-alias gdc='git diff --cached'
-alias glo='git log --oneline'
-alias ggpnp='git pull origin $(current_branch) && git push origin $(current_branch)'
-alias ggpull='git pull origin $(current_branch)'
-alias ggpush='git push origin $(current_branch)'
-alias gh='git show'
-alias gr='git remote'
-alias gs='git stash'
-alias gsp='git stash pop'
-alias gss='git status -s'
-alias gssr='gss | grep "^??" | cut -c4- | xargs rm'
-alias gst='git status'
-
-alias git-current-branch="git rev-parse --abbrev-ref HEAD 2>/dev/null"
-
-function git-log-renames () {
-    git log --name-only --format=format: --follow --find-copies-harder -- $1 | grep -v '^$' | sort -u
-}
-
-function git-branch-diff () {
-	# Return difference of two git branches from a common merge commit
-    local current=$(git-current-branch)
-    if [[ ! -n $current ]]; then
-        echo "Error: Not a git repository." 1>&2
-        return 1
-    fi
-    local from_branch=$1
-    local to_branch=${2:-$current}
-
-    git diff $(git merge-base "$from_branch" "$to_branch")..$to_branch
-}
-
-function git-log-diff () {
-	# Return difference of one line log messages of two git branches
-    local current=$(git-current-branch)
-	if [[ ! -n $current ]]; then
-		echo "Error: Not a git repository." >&2
-		return 1
-	fi
-    local from_branch=$1
-    local to_branch=${2:-$current}
-
-	diff -u <(git log --oneline $from_branch) <(git log --oneline $to_branch)
-}
-
-alias gam="gss | grep '^.M' | cut -c4- | cut -d' ' -f3 | xargs git add"
-alias git-assume="git update-index --assume-unchanged '$@'"
-alias git-unassume="git update-index --no-assume-unchanged '$@'"
-alias git-assumed="git ls-files -v | grep ^h | cut -c 3-"
-alias gbm='git diff `git-base-diff test-coverage`'
-alias git-open-new="gss | grep -E '^??' | tabify | cut -f2 | xargs open"
-
-# Emacs
-alias emc-start="emacsclient -a '' -e '(server-start)'"
-alias emc-kill="emacsclient -e '(server-shutdown)'"
-alias emc="emacsclient -t"  # CLI emacs
-# Emacsclient uses alternate editor, see zprofile
-function emq () { emacs -nw -q "$@" }
-alias emx='emacs -nw -q'
-alias e=emc
-
-# Readline rlwrap
-# alias node="env NODE_NO_READLINE=1 rlwrap node"
-alias sbcl="rlwrap sbcl"
-alias ccl="rlwrap ccl"
-alias ccl64="rlwrap ccl64"
-
-#
-# Utils
-#
-argv () {
-  python -c 'import sys; print(sys.argv[1:])' "$@"
-}
-
-about () {
-    # Grep manpages by sections
-    local cmd=$1; shift
-    man $cmd | grep_sections $* | doublelines
-}
-
-striplines () { ruby -ne 'puts $_.strip' }
-removehyphens () { perl -pe 's/-$//' }
 doublelines () { perl -pe 's/\n/\n\n/' }
+removehyphens () { perl -pe 's/-$//' }
+replace () { perl -pe "s/$(echo $1)/$(echo $2)/g" }
+striplines () { ruby -ne 'puts $_.strip' }
+trim () { awk '{$1=$1};1' } # Works only when piped into
 
 null_separate_sections () {
-    # Read whole input at once with -0777
+    # -0777 reads whole input at once
     ruby -0777 -pe 'gsub(/\n\n/, "\0")' | perl -pe 's/\n/ /'
 }
 
@@ -185,35 +98,83 @@ grep_sections () {
 	grep $*
 }
 
-# Haskell
-alias cabal-install-qt="cabal install $1 --ghc-options='-framework-path=$QT_DIR/lib'"
-alias cabal-installed-pkgs="ghc-pkg --simple-output list | ruby -pe 'gsub(/ /, \"\n\")' | ruby -pe 'gsub(/-[\d\.]+$/, \"\")' | sort -u"
-alias cabal-license="grep -E '(^\* |License:)' | ruby -pe 'gsub(/\s+\([^)]+\)\s+/, \"\")' | ruby -pe 'gsub(/(^\* |\s+License)/, \"\")'"
-alias cabal-all-licenses="cabal-installed-pkgs | xargs cabal info | cabal-license"
+#
+# Utils
+#
+
+# Print and test CLI argument expansion
+argv () { python -c 'import sys; print(sys.argv[1:])' "$@" }
+
+# Grep manpages by sections
+about () {
+    local cmd=$1; shift
+    man $cmd | grep_sections $* | doublelines
+}
+
+#
+# Services
+#
+alias weather='curl http://wttr.in'
+alias moon='curl http://wttr.in/Moon'
+cheat () { curl "cheat.sh/$1" }
+
+#
+# Emacs
+#
+alias emc-start="emacsclient -a '' -e '(server-start)'"
+alias emc-kill="emacsclient -e '(server-shutdown)'"
+alias emc="emacsclient -t"  # CLI emacs
+emq () { emacs -nw -q "$@" } # Emacsclient uses alternate editor, see zprofile
+alias emx='emacs -nw -q'
+alias e=emc
+
+#
+# Git
+#
+require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_git
+
+#
+# Programming
+#
+
+alias todo='search -E "((//|#|--|;;?)\s+(TODO|REMOVEME|FIXME))"'
+alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
+
+# Javascript
+alias wp=webpack
+alias ava='nocorrect ava'
+
+# Nix
+alias nix-meta='nix-shell -p nix-info --run "nix-info -m"'
+alias nix-node-all='nix-env -qaPA nixpkgs.nodePackages'
+alias nix-node='nix-env -qaPA nixpkgs.nodePackages | grep $1'
+
+# Python
+alias pim='python manage.py'
 
 # Ruby
 alias rb='rbenv'
 alias be='bundle exec'
-gi() {
-    gem install $@
-    rbenv rehash
-    rehash
-}
+gi () { gem install $@ && rbenv rehash && rehash }
+
+# Zig
+alias zt='zig test'
+alias zr='zig run'
+alias zmake='gmake CC="zig cc" CXX="zig c++"'
+
+# Readline rlwrap
+alias ccl64="rlwrap ccl64"
+alias ccl="rlwrap ccl"
+alias fennel='rlwrap fennel'
+alias node="env NODE_NO_READLINE=1 rlwrap node"
+alias sbcl="rlwrap sbcl"
 
 #
 # Databases
 #
 
-# Rexster
-alias rex="rexster.sh"
-alias rexcon="rexster-console.sh"
-
 # PostgreSQL
 alias pg="sudo -u postgres pg_ctl $1 -D $PGDATA -l $PGDATA/pgsql.log"
-# alias postgres_server_start='sudo -u postgres postgres -D /opt/local/var/db/postgresql91/defaultdb &'
-
-# MySQL
-# alias mysqld_start='sudo mysqld_safe --defaults-file=/opt/local/etc/mysql55/my.cnf --socket=/opt/local/var/run/mysql55/mysqld.sock --user=_mysql &'
 
 #
 # System specific aliases
@@ -225,13 +186,6 @@ elif os_type 'Linux'; then
 elif os_type 'FreeBSD'; then
     require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases_freebsd
 fi
-
-#
-# Services
-#
-alias weather='curl http://wttr.in'
-alias moon='curl http://wttr.in/Moon'
-cheat () { curl "cheat.sh/$1" }
 
 #
 # Local aliases
