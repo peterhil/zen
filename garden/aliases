@@ -6,17 +6,18 @@
 #
 # Shell utils
 #
-alias rm='nocorrect rm'
-alias l='ls -lG'
-alias ll='l -A'
-alias lh='l -ah'
-alias lll='l -a'
-# alias lsd='l -d . ..'
-alias lss='l -sS'
-alias lsize='ls -lx1hs'
 alias ...='../..'
 alias ....='../../..'
 alias .....='../../../..'
+
+alias l='ls -lG'
+alias lh='l -ah'
+alias ll='l -A'
+alias lll='l -a'
+alias lsd='l -d'
+alias lsize='ls -lx1hs'
+alias lss='l -sS'
+alias rm='nocorrect rm'
 
 function lsz () {
     local dir="$1"; shift
@@ -37,6 +38,9 @@ alias ltail='less -Ri +F'
 alias paths="echo $PATH | perl -pe 's/:/\n/g'"
 alias stdout='$@ 2>&1'  # Combine stderr to stdout
 alias xargs0='tr "\n" "\0" | xargs -0'
+
+# Locate commands on your path
+alias cmd='find $(paths) -name "$@" 2>/dev/null'
 
 # Processes
 alias pss='ps aux | grep -v grep | grep --color -i $@'
