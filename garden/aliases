@@ -98,6 +98,8 @@ alias gh='git show'
 alias gr='git remote'
 alias gs='git stash'
 alias gsp='git stash pop'
+alias gss='git status -s'
+alias gssr='gss | grep "^??" | cut -c4- | xargs rm'
 alias gst='git status'
 
 alias git-current-branch="git rev-parse --abbrev-ref HEAD 2>/dev/null"
