@@ -18,9 +18,11 @@ alias ggpush='git push origin $(current_branch)'
 alias gh='git show'
 alias glo='git log --oneline'
 alias gr='git remote'
+alias grs='git restore --staged'
 alias gs='git stash'
 alias gsp='git stash pop'
 alias gss='git status -s'
+alias gssr='gss | grep "^??" | cut -c4- | xargs rm -r'
 alias gst='git status'
 
 alias git-assume="git update-index --assume-unchanged '$@'"
