@@ -18,5 +18,5 @@ function pkg-size () {
 
 function snd () {
     local channel=${1:-"0"}
-    sudo sysctl hw.snd.default_unit=$channel
+    pactl set-default-sink $channel
 }
