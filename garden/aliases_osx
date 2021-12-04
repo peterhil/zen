@@ -3,9 +3,9 @@
 #
 # Shell utils
 #
-alias lsc='\gls -lGN --color=auto'
-alias l='lsc -l'
-alias ll='lsc -la'
+alias glsc='gls -lGN --color=auto'
+alias gl='glsc -l'
+alias gll='glsc -la'
 
 #
 # Processes
