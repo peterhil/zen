@@ -6,6 +6,7 @@
 alias glsc='gls -lGN --color=auto'
 alias gl='glsc -l'
 alias gll='glsc -la'
+alias lll='lll -e@'
 
 #
 # Processes
