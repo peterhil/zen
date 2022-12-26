@@ -34,4 +34,13 @@ ssh-agent-start () {
 }
 
 
+#
+# Python and virtualenvs
+#
+
+# Replace 669kb of scripts on pyenv virtualenvwrapper:
+workon () {
+    source "$HOME/.pyenv/versions/$1/bin/activate"
+}
+
 debug_loadtime FUNCTIONS
