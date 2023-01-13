@@ -1,8 +1,0 @@
-# ==============================================================================
-# History with substring search
-# ------------------------------------------------------------------------------
-
-load=light
-
-# search through long list of commands with Ctrl+R
-zplugin $load zdharma/history-search-multi-word

@@ -6,5 +6,4 @@
 
 # zplugin cdclear -q # <- forget completions provided up to this moment
 
-source $HOME/.zen/zplugin/history
 source $HOME/.zen/zplugin/plugins
