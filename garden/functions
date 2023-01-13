@@ -7,8 +7,6 @@ debug FUNCTIONS
 #
 # GPG
 #
-
-# Alternatively use zrezto gpgmodule
 gpg-agent-start () {
     if not_running gpg-agent ; then
         echo "Summoning GPG agent"
