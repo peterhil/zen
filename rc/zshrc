@@ -66,6 +66,7 @@ bindkey '^[[1;5B' history-beginning-search-forward  # C-down
 # ASDF language version manager - https://asdf-vm.com/
 #
 require "${ZDOTDIR:-$HOME}"/.asdf/asdf.sh
+fpath=(${ASDF_DIR}/completions $fpath)
 
 #
 # Autoload ZSH modules
