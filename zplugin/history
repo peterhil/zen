@@ -2,15 +2,7 @@
 # History with substring search
 # ------------------------------------------------------------------------------
 
-zplugin ice wait"0" silent pick"history.zsh" lucid
-zplugin snippet OMZ::lib/history.zsh
-
-zplugin ice wait"0" silent pick"history.plugin.zsh" lucid
-zplugin snippet OMZ::plugins/history/history.plugin.zsh
-
-# search history via substring
-zplugin load zsh-users/zsh-history-substring-search
+load=light
 
 # search through long list of commands with Ctrl+R
-zplugin ice from"gh" wait"1" silent pick"history-search-multi-word.plugin.zsh" lucid
-zplugin light zdharma/history-search-multi-word
+zplugin $load zdharma/history-search-multi-word

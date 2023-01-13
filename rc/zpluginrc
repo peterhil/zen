@@ -4,10 +4,7 @@
 # Zplugin configuration
 #
 
-source $HOME/.zen/zplugin/git
+# zplugin cdclear -q # <- forget completions provided up to this moment
 
-zplugin cdclear -q # <- forget completions provided up to this moment
-
-# source $HOME/.zen/zplugin/prompt
 source $HOME/.zen/zplugin/history
 source $HOME/.zen/zplugin/plugins
