@@ -13,7 +13,7 @@ function pkg-source-size () {
 }
 
 function pkg-size () {
-    pkg rquery -Ux "%sb\t%n\t\t%c" $1 | sort -n | awk -F'\t' '{ print int(($1+1)/2048) "k",$2,$3,$4 }' OFS='\t' | less -F
+    pkg rquery -Ux "%sb\t%n\t\t%c" $1 | sort -n | awk -F'\t' '{ print int($1/1024) "k",$2,$3,$4 }' OFS='\t' | less -F
 }
 
 function snd () {
