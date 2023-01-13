@@ -5,10 +5,9 @@ Zsh environment and utilies by Peter Hillerström
 
 ## Installation
 
-Install [Zplugin](https://github.com/akatrevorjay/zplugin) manually:
+Install [Zinit](https://github.com/zdharma-continuum/zinit) manually:
 
-    mkdir ~/.zplugin
-    git clone https://github.com/akatrevorjay/zplugin.git ~/.zplugin
+    git clone https://github.com/zdharma-continuum/zinit.git ~/.zinit
 
 Then clone this repository:
 

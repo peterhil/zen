@@ -4,11 +4,10 @@
 
 load=light
 
-zplugin $load zsh-users/zsh-completions
-zplugin $load zsh-users/zsh-autosuggestions
-zplugin $load zdharma/fast-syntax-highlighting
-# search through long list of commands with Ctrl+R
-zplugin $load zdharma/history-search-multi-word
+zinit $load zsh-users/zsh-completions
+zinit $load zsh-users/zsh-autosuggestions
+zinit $load zdharma-continuum/fast-syntax-highlighting
+zinit $load zdharma-continuum/history-search-multi-word
 
 
 ## Old oh-my-zsh plugins

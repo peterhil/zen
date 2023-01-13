@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 #
-# Zplugin configuration
+# Zinit configuration
 #
 
-# zplugin cdclear -q # <- forget completions provided up to this moment
+# zinit cdclear -q # <- forget completions provided up to this moment
 
-source $HOME/.zen/zplugin/plugins
+source "${ZDOTDIR:-$HOME}"/.zen/zinit/plugins

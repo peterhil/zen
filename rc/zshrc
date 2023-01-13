@@ -10,10 +10,10 @@ debug ZSHRC
 #
 # Zplugin
 #
-require "${ZDOTDIR:-$HOME}"/.zplugin/zplugin.zsh
+require "${ZDOTDIR:-$HOME}"/.zinit/zinit.zsh
 # autoload -Uz _zplugin
 # (( ${+_comps} )) && _comps[zplugin]=_zplugin
-require "${ZDOTDIR:-$HOME}"/.zpluginrc
+require "${ZDOTDIR:-$HOME}"/.zen/zinit/zinitrc
 
 #
 # Command history
