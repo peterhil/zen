@@ -35,6 +35,7 @@ export TZ='Europe/Helsinki'
 typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
+    $PNPM_HOME  # Set in zshrc
     /opt/local/{bin,sbin}  # Macports or manually installed
     /usr/local/{bin,sbin}
     $path

@@ -104,6 +104,11 @@ else
 fi
 
 #
+# Pnpm
+#
+export PNPM_HOME="${ZDOTDIR:-$HOME}"/.local/share/pnpm
+
+#
 # Local zshrc
 #
 require "${ZDOTDIR:-$HOME}"/.zshrc.local
