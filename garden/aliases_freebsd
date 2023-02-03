@@ -16,6 +16,8 @@ function pkg-size () {
     pkg rquery -Ux "%sb\t%n\t\t%c" $1 | sort -n | awk -F'\t' '{ print int($1/1024) "k",$2,$3,$4 }' OFS='\t' | less -F
 }
 
+alias pkg-tree="pkg prime-origins | as-tree"
+
 function snd () {
     local channel=${1:-"0"}
     pactl set-default-sink $channel
