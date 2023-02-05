@@ -6,7 +6,6 @@
 quiet stopwatch
 debug ZSHRC
 
-
 #
 # Zplugin
 #
@@ -78,7 +77,7 @@ autoload -U zmv
 
 # Prompt
 if test 'root' = $(whoami); then
-    prompt fade red
+    prompt fade red black
 else
     prompt fade white black
 fi
