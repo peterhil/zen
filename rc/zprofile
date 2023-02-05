@@ -12,14 +12,9 @@ debug ZPROFILE
 export CHARSET='UTF-8'
 export DISPLAY=':0.0'
 
-if [[ -z "${EDITOR}" ]] ; then
-    export ALTERNATE_EDITOR='emacs -nw -q'
-    export EDITOR='mg'
-fi
-if [[ -n "${EDITOR}" && -z "${VISUAL}" ]] ; then
-    # export VISUAL="${EDITOR}"		
-    export VISUAL="emacsclient -a emacs"
-fi
+export ALTERNATE_EDITOR='emacs -nw -q'
+export EDITOR='mg'
+export VISUAL="emacsclient -a emacs"
 
 export PAGER='less -F'
 
