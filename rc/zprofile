@@ -13,12 +13,12 @@ export CHARSET='UTF-8'
 export DISPLAY=':0.0'
 
 if [[ -z "${EDITOR}" ]] ; then
-    export ALTERNATE_EDITOR='emq'
-    export EDITOR='emacsclient'
+    export ALTERNATE_EDITOR='emacs -nw -q'
+    export EDITOR='mg'
 fi
 if [[ -n "${EDITOR}" && -z "${VISUAL}" ]] ; then
-  export VISUAL="${EDITOR}"
-  # export VISUAL='st -f monospace-12 emacs -nw -q'
+    # export VISUAL="${EDITOR}"		
+    export VISUAL="emacsclient -a emacs"
 fi
 
 export PAGER='less -F'
