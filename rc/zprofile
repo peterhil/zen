@@ -12,11 +12,11 @@ debug ZPROFILE
 export CHARSET='UTF-8'
 export DISPLAY=':0.0'
 
-export ALTERNATE_EDITOR='mg'
-export EDITOR='emacs -nw -q'
-export VISUAL='emacsclient -a emacs'
+export ALTERNATE_EDITOR='emacs'
+export EDITOR='emacsclient -t'
+export VISUAL='emacsclient'
 
-export PAGER='less -F'
+export PAGER='less -FR'  # Quit if only one screen, pass ANSI colours
 
 export NNTPSERVER='news.inet.fi'
 export TZ='Europe/Helsinki'
