@@ -142,8 +142,9 @@ alias todo='search -E "((//|#|--|;;?)\s+(TODO|REMOVEME|FIXME))"'
 alias svn-commits-for-merge="cut -d'|' -f1 | sort -u | perl -pe 's/ *r([0-9a-f]+) *\n/\1,/g'"
 
 # Javascript
-alias wp=webpack
 alias ava='nocorrect ava'
+alias pn=pnpm
+alias wp=webpack
 
 # Nix
 alias nix-meta='nix-shell -p nix-info --run "nix-info -m"'
