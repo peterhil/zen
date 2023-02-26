@@ -11,10 +11,6 @@ debug UTILS
 # Z from rupa/z
 require "${ZDOTDIR:-$HOME}/.zen/lib/rupa/z/z.sh"
 
-# Pip
-require "${ZDOTDIR:-$HOME}/.zen/lib/pip_completion"
-
-
 #
 # Package managers
 #
