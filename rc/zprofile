@@ -16,7 +16,7 @@ export ALTERNATE_EDITOR='emacs -nw -q'
 export EDITOR='mg'
 export VISUAL="emacsclient -a emacs"
 
-export PAGER='less -F'
+export PAGER='less -FR'  # Quit if only one screen, pass ANSI colours
 
 export NNTPSERVER='news.inet.fi'
 export TZ='Europe/Helsinki'
@@ -30,6 +30,7 @@ export TZ='Europe/Helsinki'
 typeset -gU path
 path=(
     ${ZDOTDIR:-$HOME}/bin
+    $PNPM_HOME  # Set in zshrc
     /opt/local/{bin,sbin}  # Macports or manually installed
     /usr/local/{bin,sbin}
     $path

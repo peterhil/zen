@@ -6,7 +6,6 @@
 quiet stopwatch
 debug ZSHRC
 
-
 #
 # Zplugin
 #
@@ -66,19 +65,18 @@ bindkey '^[[1;5B' history-beginning-search-forward  # C-down
 # ASDF language version manager - https://asdf-vm.com/
 #
 require "${ZDOTDIR:-$HOME}"/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
 
 #
 # Autoload ZSH modules
 #
-autoload -Uz compinit; compinit -i
+# See garden/completion for completions
 autoload -U colors; colors
 autoload -U promptinit; promptinit
 autoload -U zmv
 
 # Prompt
 if test 'root' = $(whoami); then
-    prompt fade red
+    prompt fade red black
 else
     prompt fade white black
 fi
@@ -87,6 +85,7 @@ fi
 # Zen garden
 #
 require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases
+require "${ZDOTDIR:-$HOME}"/.zen/garden/completion
 require "${ZDOTDIR:-$HOME}"/.zen/garden/utils
 require "${ZDOTDIR:-$HOME}"/.zen/garden/functions
 
@@ -102,6 +101,11 @@ if ! test $(process-count '^emacs --daemon') -gt 0 ; then
 else
     debug "Emacs daemon is hexing"
 fi
+
+#
+# Pnpm
+#
+export PNPM_HOME="${ZDOTDIR:-$HOME}"/.local/share/pnpm
 
 #
 # Local zshrc
