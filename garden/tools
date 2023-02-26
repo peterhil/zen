@@ -19,9 +19,9 @@ quiet () {
 }
 
 stopwatch () {
-    NOW=$SECONDS
+    local NOW=$SECONDS
     echo $(( $NOW - ${PREV:-$NOW} ))
-    PREV=$NOW
+    local PREV=$NOW
 }
 
 quiet stopwatch
