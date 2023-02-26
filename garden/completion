@@ -1,0 +1,65 @@
+#!/usr/bin/env zsh
+#
+# COMPLETION - setup command completion
+#
+quiet stopwatch
+debug COMPLETION
+
+#
+# Set function paths
+#
+# Path directories should have files starting with an underscore and
+# the command name, for example `_asdf`.
+
+fpath=(${ASDF_DIR}/completions $fpath)
+
+# Load all completion files placed in `.zsh/completions`
+fpath=(${ZDOTDIR:-$HOME}/.zsh/completions $fpath)
+
+#
+# Load modules before compinit
+#
+zmodload zsh/complist
+
+#
+# Compinit setup
+#
+autoload -Uz compinit; compinit -i
+
+#
+# Options
+#
+
+# setopt GLOB_COMPLETE      # Show autocompletion menu with globs
+setopt MENU_COMPLETE        # Automatically highlight first element of completion menu
+setopt AUTO_LIST            # Automatically list choices on ambiguous completion.
+# setopt COMPLETE_IN_WORD     # Complete from both ends of a word.
+
+#
+# Zstyles definitions
+#
+# NOTE! Ztyle pattern is:
+# :completion:<function>:<completer>:<command>:<argument>:<tag>
+
+# Define completers
+zstyle ':completion:*' completer _extensions _complete # _approximate
+zstyle ':completion:*' complete true
+
+# Use cache for commands using cache
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path "${ZDOTDIR:-$HOME}"/.zcompcache
+
+# Complete the alias when _expand_alias is used as a function
+zle -C alias-expension complete-word _generic
+zstyle ':completion:alias-expension:*' completer _expand_alias
+bindkey '^Xa' alias-expension
+
+#
+# External completion files
+#
+
+# Pip
+require "${ZDOTDIR:-$HOME}"/.zen/lib/pip_completion
+
+# debug_loadtime COMPLETION
+debug

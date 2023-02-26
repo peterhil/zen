@@ -65,12 +65,11 @@ bindkey '^[[1;5B' history-beginning-search-forward  # C-down
 # ASDF language version manager - https://asdf-vm.com/
 #
 require "${ZDOTDIR:-$HOME}"/.asdf/asdf.sh
-fpath=(${ASDF_DIR}/completions $fpath)
 
 #
 # Autoload ZSH modules
 #
-autoload -Uz compinit; compinit -i
+# See garden/completion for completions
 autoload -U colors; colors
 autoload -U promptinit; promptinit
 autoload -U zmv
@@ -86,6 +85,7 @@ fi
 # Zen garden
 #
 require "${ZDOTDIR:-$HOME}"/.zen/garden/aliases
+require "${ZDOTDIR:-$HOME}"/.zen/garden/completion
 require "${ZDOTDIR:-$HOME}"/.zen/garden/utils
 require "${ZDOTDIR:-$HOME}"/.zen/garden/functions
 
