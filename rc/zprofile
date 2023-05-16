@@ -25,6 +25,15 @@ export TZ='Europe/Helsinki'
 #[[ $TERM = "xterm" ]] && stty -parenb -istrip cs8
 
 #
+# Pnpm
+#
+if os_type 'Darwin'; then
+    export PNPM_HOME="${ZDOTDIR:-$HOME}"/Library/pnpm
+else
+    export PNPM_HOME="${ZDOTDIR:-$HOME}"/.local/share/pnpm
+fi
+
+#
 # Paths
 #
 typeset -gU path
