@@ -95,11 +95,13 @@ if test "$USE_AGENTS" -ne 0 ; then
     gpg-agent-start
 fi
 
-if ! test $(process-count '^emacs --daemon') -gt 0 ; then
+if test $(process-count '^emacs --daemon') -gt 0 ; then
+    echo "Emacs daemon is hexing"
+elif (( ${+EMACS_DAEMON} )); then
     echo "Emacs daemon shall start"
     emacs --daemon
 else
-    debug "Emacs daemon is hexing"
+    echo "Not starting Emacs. Set $EMACS_DAEMON to start it..."
 fi
 
 #
