@@ -41,4 +41,9 @@ workon () {
     source "$HOME/.pyenv/versions/$1/bin/activate"
 }
 
+
+venv () {
+    source "./venv/$1/bin/activate"
+}
+
 debug_loadtime FUNCTIONS

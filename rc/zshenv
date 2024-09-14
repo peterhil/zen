@@ -22,14 +22,42 @@ debug "ZSHENV"
 #
 # Environment - override these in ~/.zshenv.local if needed
 #
+export ALTERNATE_EDITOR='emacs -nw -q'
 export CHARSET='UTF-8'
 export DISPLAY=':0.0'
+export EDITOR='mg'
 export LC_ALL='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
+export NNTPSERVER='news.inet.fi'
+export PAGER='less -FR'  # Quit if only one screen, pass ANSI colours
 export RSYNC_RSH='ssh'
+export TIME_STYLE='iso'
 export TZ='Europe/Helsinki'
-
 export USE_AGENTS=1
+export VISUAL="emacsclient -a emacs"
+
+#
+# Pnpm
+#
+if os_type 'Darwin'; then
+    export PNPM_HOME="${ZDOTDIR:-$HOME}"/Library/pnpm
+else
+    export PNPM_HOME="${ZDOTDIR:-$HOME}"/.local/share/pnpm
+fi
+
+#
+# Paths
+#
+typeset -gU path
+path=(
+    ${ZDOTDIR:-$HOME}/bin
+    $PNPM_HOME  # Set in zshrc
+    /opt/local/{bin,sbin}  # Macports or manually installed
+    /usr/local/{bin,sbin}
+    $path
+)
+export PATH
+export MANPATH="/opt/local/share/man:$MANPATH"
 
 #
 # Local zshenv
