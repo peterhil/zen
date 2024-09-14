@@ -101,7 +101,7 @@ elif (( ${+EMACS_DAEMON} )); then
     echo "Emacs daemon shall start"
     emacs --daemon
 else
-    echo "Not starting Emacs. Set $EMACS_DAEMON to start it..."
+    echo "Not starting Emacs. Set \$EMACS_DAEMON to start it..."
 fi
 
 #
