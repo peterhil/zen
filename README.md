@@ -28,6 +28,11 @@ The following files are sources from the respective files that are under version
     .zshenv.local
     .zshrv.local
 
+## Command completions
+
+Completion files should be placed in `.zsh/completions` directory which is added to `$fpath`.
+The completion file names should start with an underscore and have the command name, for example `_asdf`.
+
 ## License
 
 This software is [MIT licensed](./LICENSE).
